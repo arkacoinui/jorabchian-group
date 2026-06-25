@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN HEADER — full-bleed video background
+═══════════════════════════════════════════════════════════ */
+
+.main-header {
+  position: relative;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+.header-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  background: #061018; /* fallback while video loads */
+}
+
+/* ═══════════════════════════════════════════════════════════
+   AREAS OF COLLABORATION — 3-column video + text cards
+═══════════════════════════════════════════════════════════ */
+
+.areas-of-collaboration {
+  background: #434343;
+  padding: 80px 28px;
+}
+
+.aoc-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aoc-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  margin: 0 0 48px;
+}
+
+/* 3-column grid — equal-width cards */
+.aoc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Individual card */
+.aoc-card {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.aoc-card:hover {
+  border-color: rgba(245, 120, 0, 0.45);
+}
+
+/* Video wrapper — locked to 16:9 */
+.aoc-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
+}
+
+.aoc-video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text body below the video */
+.aoc-body {
+  padding: 28px 28px 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aoc-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.aoc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Hero shrinks on small screens */
+  .main-header {
+    min-height: 60vh;
+  }
+
+  /* Stack cards vertically on mobile */
+  .aoc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aoc-heading {
+    font-size: 22px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* 2 columns on mid-size tablets */
+  .aoc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
