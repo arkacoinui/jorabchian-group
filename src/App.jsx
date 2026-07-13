@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import AboutMe from './components/AboutMe.jsx';
@@ -29,10 +28,4 @@ export default function App() {
       <Footer />
     </div>
   );
-=======
-import LandingPage from './components/LandingPage'
-
-export default function App() {
-  return <LandingPage />
->>>>>>> 9ab1f09abd0a8128c6217b3631fd95b16ed88210
 }
