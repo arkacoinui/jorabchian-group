@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    a { text-decoration: none; }
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    .nav-item:hover { color: #F57C00 !important; }
+    .btn-orange:hover { background: #e06500 !important; transform: translateY(-1px); }
+    .btn-outline:hover { background: rgba(245,196,24,0.08) !important; }
+    .play-btn:hover { transform: scale(1.1) !important; }
+    .why-card:hover { border-color: rgba(245,120,0,0.55) !important; background: #222 !important; }
+    .industry-card:hover { background: #16163a !important; border-color: rgba(245,120,0,0.35) !important; transform: translateY(-2px); }
+    .btn-orange, .btn-outline, .industry-card { transition: all 0.2s ease; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .hamburger { display: flex !important; }
+      .collab-row { flex-direction: column !important; }
+      .collab-video { min-height: 200px !important; }
+      .why-grid { grid-template-columns: repeat(2,1fr) !important; }
+      .models-grid { grid-template-columns: 1fr !important; }
+      .footer-split { flex-direction: column !important; }
+      .contact-left { border-radius: 12px 12px 0 0 !important; }
+      .contact-right { border-radius: 0 0 12px 12px !important; }
+      .hero-title { font-size: clamp(2.2rem, 8vw, 3.6rem) !important; }
+    }
+    @media (max-width: 480px) {
+      .why-grid { grid-template-columns: 1fr !important; }
+      .industries-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (min-width: 769px) {
+      .hamburger { display: none !important; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</helmet>
+
+<div style="background:#071820; color:#ffffff; font-family:'DM Sans',sans-serif;">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <header style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(5,18,28,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;height:64px;padding:0 24px;gap:20px;">
+      <div style="flex:none;line-height:1.1;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;letter-spacing:0.4px;">Joorbachian</div>
+        <div style="font-family: 'Space Grotesk',sans-serif; font-size: 9px; font-weight: 500; color: #ff683f; letter-spacing: 2.5px; text-transform: uppercase">Group</div>
+      </div>
+      <nav class="nav-links" style="display:flex;gap:28px;margin:0 auto;">
+        <a href="#hero" class="nav-item" style="color:#8cb8c5;font-size:14px;transition:color 0.18s;">Home</a>
+        <a href="#collaboration" class="nav-item" style="color:#8cb8c5;font-size:14px;font-style:italic;transition:color 0.18s;">works</a>
+        <a href="#about" class="nav-item" style="color:#8cb8c5;font-size:14px;transition:color 0.18s;">About</a>
+        <a href="#contact" class="nav-item" style="color:#8cb8c5;font-size:14px;transition:color 0.18s;">Contact</a>
+      </nav>
+      <a href="#contact" class="btn-orange" style="color: #fff; padding: 9px 22px; border-radius: 7px; font-family: 'Space Grotesk',sans-serif; font-size: 13px; font-weight: 600; white-space: nowrap; flex: none; cursor: pointer; background-color: #ff683f">Get in touch</a>
+      <button class="hamburger" onClick="{{ toggleMenu }}" style="width:38px;height:38px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:transparent;cursor:pointer;align-items:center;justify-content:center;flex:none;padding:0;">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M0 1h16M0 6h16M0 11h16" stroke="#8cb8c5" stroke-width="1.5" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="background:rgba(5,18,28,0.98);padding:20px 24px 24px;border-top:1px solid rgba(255,255,255,0.06);">
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <a href="#hero" class="nav-item" style="color:#8cb8c5;font-size:16px;">Home</a>
+          <a href="#collaboration" class="nav-item" style="color:#8cb8c5;font-size:16px;">Works</a>
+          <a href="#about" class="nav-item" style="color:#8cb8c5;font-size:16px;">About</a>
+          <a href="#contact" class="nav-item" style="color:#8cb8c5;font-size:16px;">Contact</a>
+          <a href="#contact" class="btn-orange" style="background:#F57C00;color:#fff;padding:13px 24px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;text-align:center;">Get in touch</a>
+        </div>
+      </div>
+    </sc-if>
+  </header>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(150deg,#061018 0%,#0a1c28 45%,#0d1f30 100%);padding-top:64px;overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.032) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.032) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;"></div>
+      <div style="position:absolute;top:15%;right:8%;width:45vw;height:60vh;background:radial-gradient(ellipse,rgba(14,55,80,0.55) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:0;left:-5%;width:35vw;height:45vh;background:radial-gradient(ellipse,rgba(28,15,48,0.45) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 28px;animation:fadeUp 0.8s ease both;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,120,0,0.1);border:1px solid rgba(245,120,0,0.22);border-radius:100px;padding:6px 16px;margin-bottom:32px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#F57C00;display:inline-block;"></span>
+          <span style="font-size:11px;color:#F5A855;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;">Available for projects</span>
+        </div>
+        <h1 class="hero-title" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,5.5vw,4.8rem);font-weight:700;line-height:1.08;margin:0 0 28px;letter-spacing:-0.5px;max-width:720px;">
+          <span style="color:#F5C418;font-style:italic;">Production partner</span><br>
+          <span style="color:#ffffff;">for Industrial Visualization<br>&amp; Interactive Solutions</span>
+        </h1>
+        <p style="color:#6fa0b2;font-size:clamp(14px,1.5vw,17px);line-height:1.7;margin:0 0 44px;max-width:500px;">Industrial-grade 3D animation, real-time Unreal Engine applications, and interactive web experiences — built for technical industries.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+          <a href="#collaboration" class="btn-orange" style="color: #fff; padding: 14px 32px; border-radius: 8px; font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: 15px; display: inline-block; cursor: pointer; background-color: #ff683f">Explore my work</a>
+          <a href="#contact" class="btn-outline" style="color:#F5C418;border:1px solid rgba(245,196,24,0.3);padding:14px 32px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:15px;display:inline-block;cursor:pointer;">Get in touch</a>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <span style="color:#2c5a6a;font-size:10px;letter-spacing:2px;text-transform:uppercase;">Scroll</span>
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none"><rect x="1" y="1" width="12" height="18" rx="6" stroke="#2c5a6a" stroke-width="1.2"></rect><rect x="5.5" y="4" width="3" height="5" rx="1.5" fill="#2c5a6a"></rect></svg>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ME ═══ -->
+    <section id="about" style="padding: 80px 28px; background-color: #45848d">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+          <div style="flex:1;min-width:280px;">
+            <h2 style="font-family: 'Space Grotesk',sans-serif; font-size: 30px; font-weight: 700; color: #030303; margin: 0 0 6px">About me</h2>
+            <p style="color: #000000; font-weight: 500; font-size: 16px; margin: 0 0 22px">Hi, I'm Ali Joorbachian.</p>
+            <p style="color: #000000; font-size: 15px; line-height: 1.75; margin: 0">I specialize in industrial visualization, interactive experiences, and real-time content production. I collaborate with animation studios, VR developers, Unreal Engine teams, and interactive production specialists to deliver industrial visualization, training, and product experience projects.</p>
+          </div>
+          <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:28px;">
+            <p style="color: #000000; font-size: 15px; line-height: 1.75; margin: 0">I collaborate with animation studios, VR developers, Unreal Engine teams, and interactive production specialists to deliver industrial visualization, training, and product experience projects.</p>
+            <div>
+              <a href="#" class="btn-orange" style="color: #fff; padding: 13px 28px; border-radius: 7px; font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; background-color: #ff683f">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,2 13,7 3,12" fill="#fff"></polygon></svg>
+                Introduction video
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ AREAS OF COLLABORATION ═══ -->
+    <section id="collaboration" style="background:#434343;padding:80px 28px;">
+      <div style="max-width:1200px;margin:0 auto;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;text-align:center;color:#fff;margin:0 0 48px;">Areas of Collaboration</h2>
+
+        <!-- 3D Animation -->
+        <div class="collab-row" style="display:flex;background:#1e1e1e;border-radius:12px;overflow:hidden;margin-bottom:18px;border:1px solid rgba(255,255,255,0.07);">
+          <div style="flex:1;padding:36px 40px;min-width:260px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#fff;margin:0 0 20px;display:flex;align-items:center;gap:12px;">
+              
+              3D Animation
+            </h3>
+            <ul style="display:flex;flex-direction:column;gap:10px;">
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Industrial Animation</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Process Animation</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Product Animation</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Technical Visualization</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Manufacturing Pros</li>
+            </ul>
+          </div>
+          <div class="collab-video" style="flex:1;min-width:260px;min-height:240px;background:linear-gradient(135deg,#091722 0%,#162840 100%);position:relative;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);background-size:24px 24px;"></div>
+            <div class="play-btn" style="width:60px;height:60px;border-radius:50%;background:#F57C00;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;cursor:pointer;box-shadow:0 0 28px rgba(245,120,0,0.4);transition:transform 0.2s;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"></polygon></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time Applications -->
+        <div class="collab-row" style="display:flex;background:#1e1e1e;border-radius:12px;overflow:hidden;margin-bottom:18px;border:1px solid rgba(255,255,255,0.07);">
+          <div style="flex:1;padding:36px 40px;min-width:260px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#fff;margin:0 0 20px;display:flex;align-items:center;gap:12px;">
+              
+              Real-Time Applications
+            </h3>
+            <ul style="display:flex;flex-direction:column;gap:10px;">
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Unreal Engine Applications</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>VR Experiences</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Interactive Simulations</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Safety Training</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Serious Games</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Learning Applications</li>
+            </ul>
+          </div>
+          <div class="collab-video" style="flex:1;min-width:260px;min-height:240px;background:linear-gradient(135deg,#0d1424 0%,#1a1e38 100%);position:relative;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);background-size:24px 24px;"></div>
+            <div class="play-btn" style="width:60px;height:60px;border-radius:50%;background:#F57C00;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;cursor:pointer;box-shadow:0 0 28px rgba(245,120,0,0.4);transition:transform 0.2s;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"></polygon></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web-Based Experiences -->
+        <div class="collab-row" style="display:flex;background:#1e1e1e;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);">
+          <div style="flex:1;padding:36px 40px;min-width:260px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#fff;margin:0 0 20px;display:flex;align-items:center;gap:12px;">
+              
+              Web-Based Experiences
+            </h3>
+            <ul style="display:flex;flex-direction:column;gap:10px;">
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>WebGL Applications</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Three.js Experiences</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Product Configuration</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Interactive Product Showcases</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Virtual Showrooms</li>
+              <li style="display:flex;align-items:center;gap:10px;color:#7db4c0;font-size:14px;"><span style="width:5px;height:5px;background:#F57C00;border-radius:50%;flex:none;"></span>Digital Sales Tools</li>
+            </ul>
+          </div>
+          <div class="collab-video" style="flex:1;min-width:260px;min-height:240px;background:linear-gradient(135deg,#0a1a18 0%,#122a25 100%);position:relative;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);background-size:24px 24px;"></div>
+            <div class="play-btn" style="width:60px;height:60px;border-radius:50%;background:#F57C00;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;cursor:pointer;box-shadow:0 0 28px rgba(245,120,0,0.4);transition:transform 0.2s;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="white"><polygon points="6,3 17,10 6,17"></polygon></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHY WORK WITH ME ═══ -->
+    <section id="why" style="padding: 80px 28px; background-color: #1a2730">
+      <div style="max-width:1200px;margin:0 auto;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;text-align:center;color:#fff;margin:0 0 48px;">Why work with me</h2>
+        <div class="why-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div class="why-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px 28px;cursor:default;transition:all 0.2s;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">Flexible Production Resources</div>
+            <div style="font-size:13px;color:#5a8898;line-height:1.5;">Scale up or down based on project requirements without overhead.</div>
+          </div>
+          <div class="why-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px 28px;cursor:default;transition:all 0.2s;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">Industry Expertise</div>
+            <div style="font-size:13px;color:#5a8898;line-height:1.5;">Deep knowledge of industrial sectors, terminology, and visualization needs.</div>
+          </div>
+          <div class="why-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px 28px;cursor:default;transition:all 0.2s;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">Scalable Teams</div>
+            <div style="font-size:13px;color:#5a8898;line-height:1.5;">Access to a network of specialists for any scope of production.</div>
+          </div>
+          <div class="why-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px 28px;cursor:default;transition:all 0.2s;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">Structured Workflow</div>
+            <div style="font-size:13px;color:#5a8898;line-height:1.5;">Clear milestones, defined deliverables, and transparent communication.</div>
+          </div>
+          <div class="why-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px 28px;cursor:default;transition:all 0.2s;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">Technical Accuracy</div>
+            <div style="font-size:13px;color:#5a8898;line-height:1.5;">Every asset is engineered to reflect real-world technical specifications.</div>
+          </div>
+          <div class="why-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px 28px;cursor:default;transition:all 0.2s;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;">Collaborative Approach</div>
+            <div style="font-size:13px;color:#5a8898;line-height:1.5;">You stay in the loop at every stage from brief to final delivery.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COLLABORATION MODELS ═══ -->
+    <section id="models" style="padding: 80px 28px; background-color: #48494b">
+      <div style="max-width:1200px;margin:0 auto;">
+        
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;text-align:center;color:#fff;margin:0 0 48px;">COLLABORATION MODELS</h3>
+        <div class="models-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+
+          <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:32px 36px;">
+            <div style="font-size:11px;font-weight:600;color:#F57C00;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">01</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0 0 10px;">Project-Based Collaboration</h4>
+            <p style="color:#5a8898;font-size:13px;margin:0 0 14px;line-height:1.6;">For studios that need defined scope or fixed deliverables.</p>
+            <ul style="display:flex;flex-direction:column;gap:8px;">
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Fixed price per project</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Milestone-based payments</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Clear scope &amp; timeline</li>
+            </ul>
+          </div>
+
+          <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:32px 36px;">
+            <div style="font-size:11px;font-weight:600;color:#F57C00;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">02</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0 0 10px;">Time-Based Collaboration</h4>
+            <p style="color:#5a8898;font-size:13px;margin:0 0 14px;line-height:1.6;">For flexible or evolving production needs.</p>
+            <ul style="display:flex;flex-direction:column;gap:8px;">
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Daily / Weekly / Monthly rate</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Suitable for ongoing development</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Scalable resource allocation</li>
+            </ul>
+          </div>
+
+          <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:32px 36px;">
+            <div style="font-size:11px;font-weight:600;color:#F57C00;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">03</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0 0 10px;">Retainer / Monthly Partnership</h4>
+            <p style="color:#5a8898;font-size:13px;margin:0 0 14px;line-height:1.6;">For studios that need continuous production support.</p>
+            <ul style="display:flex;flex-direction:column;gap:8px;">
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Fixed monthly capacity (X hrs / month)</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Priority availability</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Lower operational friction</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Integrated into studio pipeline</li>
+            </ul>
+          </div>
+
+          <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:32px 36px;">
+            <div style="font-size:11px;font-weight:600;color:#F57C00;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">04</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0 0 10px;">Production Partnership (Hybrid Model)</h4>
+            <p style="color:#5a8898;font-size:13px;margin:0 0 14px;line-height:1.6;">For complex or high-value projects.</p>
+            <ul style="display:flex;flex-direction:column;gap:8px;">
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Mixed model (fixed + hourly + milestone)</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Shared responsibility in production</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Suitable team setup from network specialists</li>
+              <li style="display:flex;align-items:flex-start;gap:8px;color:#7db4c0;font-size:13px;"><span style="color:#F57C00;margin-top:1px;">•</span>Long-term collaboration potential</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW PROJECTS MOVE FORWARD ═══ -->
+    <section id="workflow" style="padding: 80px 28px; background-color: #1a2d31">
+      <div style="max-width:1200px;margin:0 auto;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;text-align:center;color:#fff;margin:0 0 52px;">How Projects Move Forward</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+
+          <!-- 3D Animation Workflow -->
+          <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 32px 36px; background-color: #1a2d31">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="2,2 14,8 2,14" fill="#F57C00"></polygon></svg>
+              <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0;">3D Animation Workflow</h4>
+            </div>
+            <div style="display:flex;gap:0;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Pre-Production</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Asset Development</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Animation</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Rendering</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Delivery</span>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;">
+              <span style="font-size:11px;color:#F57C00;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-right:12px;">Technologies</span>
+              <span style="font-size:13px;color:#5a8898;">Maya, Blender, 3ds Max, Substance 3D, V-Ray, Redshift, Arnold, After Effects</span>
+            </div>
+          </div>
+
+          <!-- Real-Time Applications Workflow -->
+          <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 32px 36px; background-color: #1a2d31">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="2,2 14,8 2,14" fill="#F57C00"></polygon></svg>
+              <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0;">Real-Time Applications Workflow</h4>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Experience Design</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Asset Preparation</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Development</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Testing</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Deployment</span>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;">
+              <span style="font-size:11px;color:#F57C00;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-right:12px;">Technologies</span>
+              <span style="font-size:13px;color:#5a8898;">Unreal Engine, Unity, Blueprints, C++, Git, OpenXR, Meta XR, SteamVR</span>
+            </div>
+          </div>
+
+          <!-- Web-Based Experiences Workflow -->
+          <div style="border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 32px 36px; background-color: #1a2d31">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="2,2 14,8 2,14" fill="#F57C00"></polygon></svg>
+              <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:0;">Web-Based Experiences Workflow</h4>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">UX Design</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Development</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Optimization</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Testing</span>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M8 1l4 4-4 4" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.08);padding:6px 14px;border-radius:100px;font-size:12px;color:#7db4c0;white-space:nowrap;">Deployment</span>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;">
+              <span style="font-size:11px;color:#F57C00;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-right:12px;">Technologies</span>
+              <span style="font-size:13px;color:#5a8898;">Three.js, WebGL, React, Next.js, TypeScript, Node.js, REST APIs</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INDUSTRIES ═══ -->
+    <section id="industries" style="padding: 80px 28px; background-color: #1a1e31">
+      <div style="max-width:1200px;margin:0 auto;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;text-align:center;color:#fff;margin:0 0 48px;">Industries Section</h2>
+        <div class="industries-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div class="industry-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:28px 32px;cursor:default;">
+            <div style="font-size:22px;margin-bottom:12px;">⚙️</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;">Manufacturing</div>
+          </div>
+          <div class="industry-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:28px 32px;cursor:default;">
+            <div style="font-size:22px;margin-bottom:12px;">🌱</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;">Renewable Energy</div>
+          </div>
+          <div class="industry-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:28px 32px;cursor:default;">
+            <div style="font-size:22px;margin-bottom:12px;">🚛</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;">Transportation</div>
+          </div>
+          <div class="industry-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:28px 32px;cursor:default;">
+            <div style="font-size:22px;margin-bottom:12px;">🏗️</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;">Industrial Equipment</div>
+          </div>
+          <div class="industry-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:28px 32px;cursor:default;">
+            <div style="font-size:22px;margin-bottom:12px;">🏢</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;">Construction</div>
+          </div>
+          <div class="industry-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:28px 32px;cursor:default;">
+            <div style="font-size:22px;margin-bottom:12px;">🎓</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;">Training</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA BANNER ═══ -->
+    <section style="padding: 40px 28px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #000000">
+      <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <p style="color: #cec414; font-size: 14px; line-height: 1.8; margin: 0">For the detailed overview of our production workflow, sample timeline and pricing structures, please <span style="color:#F5C418;">contact me via Email / Whatsapp / Google Meet</span> to receive the <span style="color:#F5C418;text-decoration:underline;cursor:pointer;">full production brief (PDF)</span> or discussing your concerns face to face.</p>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact" style="padding: 80px 28px; background-color: #1a1e31">
+      <div style="max-width:1100px;margin:0 auto;">
+        <div class="footer-split" style="display:flex;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+
+          <!-- Left: contact info -->
+          <div class="contact-left" style="flex: 1; padding: 52px 48px; min-width: 280px; background-color: #1a1e31">
+            <p style="font-size:11px;color:#F57C00;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;margin:0 0 12px;">Let's talk</p>
+            <h2 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#F57C00;margin:0 0 12px;line-height:1.1;">Get in touch!</h2>
+            <p style="color:#5a8898;font-size:14px;margin:0 0 40px;line-height:1.65;">Looking for a production partner for animation, VR, Unreal Engine, or WebGL projects?</p>
+            <div style="display:flex;flex-direction:column;gap:22px;">
+              <div style="display:flex;align-items:flex-start;gap:14px;">
+                <div style="width:36px;height:36px;background:rgba(245,120,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3h10c.6 0 1 .4 1 1v8c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z" stroke="#F57C00" stroke-width="1.3"></path><path d="M2 4l6 5 6-5" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size:11px;color:#3a6a78;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Email</div>
+                  <div style="color:#c8dde4;font-size:14px;">Ali@Joorbachian.com</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:14px;">
+                <div style="width:36px;height:36px;background:rgba(245,120,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 2h2.2l1 2.5L5.5 5.7a8 8 0 004.8 4.8l1.2-1.2 2.5 1V12.5A1.5 1.5 0 0112.5 14C6.7 14 2 9.3 2 3.5A1.5 1.5 0 013.5 2z" stroke="#F57C00" stroke-width="1.3" stroke-linejoin="round"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size:11px;color:#3a6a78;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Whatsapp</div>
+                  <div style="color:#c8dde4;font-size:14px;">+0090 9651980</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:14px;">
+                <div style="width:36px;height:36px;background:rgba(245,120,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#F57C00" stroke-width="1.3"></rect><path d="M5 7v4M5 5v.5M8 11V8c0-1.1.9-2 2-2h.5" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size:11px;color:#3a6a78;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">LinkedIn</div>
+                  <div style="color:#c8dde4;font-size:14px;">@ali-Joorbachian2</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:14px;">
+                <div style="width:36px;height:36px;background:rgba(245,120,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a4 4 0 000 8c2.2 0 4-1.8 4-4S10.2 2 8 2z" stroke="#F57C00" stroke-width="1.3"></path><path d="M4 10.5C2.8 11.4 2 12.6 2 14h12c0-1.4-.8-2.6-2-3.5" stroke="#F57C00" stroke-width="1.3" stroke-linecap="round"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size:11px;color:#3a6a78;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Location</div>
+                  <div style="color:#c8dde4;font-size:14px;">Istanbul, Turkey</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div class="contact-right" style="flex:1.2;background:#ffffff;padding:52px 48px;min-width:280px;">
+            <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;text-align:center;">
+                <div style="width:56px;height:56px;background:#F57C00;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </div>
+                <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;color:#1a1a1a;margin:0;">Message Sent!</h3>
+                <p style="color:#6a8a98;font-size:14px;margin:0;">I'll get back to you as soon as possible.</p>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:18px;">
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;color:#3a5a68;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;">Name</label>
+                  <input type="text" value="{{ name }}" onChange="{{ onNameChange }}" placeholder="Your full name" required="" style="width:100%;padding:12px 16px;border:1.5px solid #e0eaee;border-radius:8px;font-size:14px;color:#1a1a1a;outline:none;font-family:'DM Sans',sans-serif;background:#f8fbfc;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;color:#3a5a68;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;">Email</label><input type="email" value="{{ email }}" onChange="{{ onEmailChange }}" placeholder="your@email.com" required="" style="width:100%;padding:12px 16px;border:1.5px solid #e0eaee;border-radius:8px;font-size:14px;color:#1a1a1a;outline:none;font-family:'DM Sans',sans-serif;background:#f8fbfc;"><input type="email" value="{{ email }}" onChange="{{ onEmailChange }}" placeholder="phone number" required="" style="width:100%;padding:12px 16px;border:1.5px solid #e0eaee;border-radius:8px;font-size:14px;color:#1a1a1a;outline:none;font-family:'DM Sans',sans-serif;background:#f8fbfc;">
+                  
+                </div>
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;color:#3a5a68;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;">Message</label>
+                  <textarea value="{{ message }}" onChange="{{ onMessageChange }}" placeholder="Tell me about your project..." required="" rows="5" style="width:100%;padding:12px 16px;border:1.5px solid #e0eaee;border-radius:8px;font-size:14px;color:#1a1a1a;outline:none;resize:vertical;font-family:'DM Sans',sans-serif;background:#f8fbfc;"></textarea>
+                </div>
+                <button type="submit" class="btn-orange" style="background:#F57C00;color:#fff;padding:14px 28px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;border:none;cursor:pointer;width:100%;">Send Message</button>
+              </form>
+            </sc-if>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="background:#050e14;padding:20px 28px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
+    <p style="color:#3a5a68;font-size:13px;margin:0;">© 2014 – 2024 All rights reserved. Content's copyright by Ali Joorbachian</p>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {
+    menuOpen: false,
+    name: '',
+    email: '',
+    message: '',
+    submitted: false
+  };
+
+  renderVals() {
+    const { menuOpen, name, email, message, submitted } = this.state;
+    return {
+      menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      name, email, message, submitted, notSubmitted: !submitted,
+      onNameChange:    (e) => this.setState({ name: e.target.value }),
+      onEmailChange:   (e) => this.setState({ email: e.target.value }),
+      onMessageChange: (e) => this.setState({ message: e.target.value }),
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (name && email && message) {
+          this.setState({ submitted: true });
+          setTimeout(() => this.setState({ submitted: false, name: '', email: '', message: '' }), 4000);
+        }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
