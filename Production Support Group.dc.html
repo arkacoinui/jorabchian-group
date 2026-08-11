@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#0A0D13;font-family:'Manrope',sans-serif;}
+  a{color:#E4611F;text-decoration:none;}
+  a:hover{color:#f07a41;}
+  *{box-sizing:border-box;}
+  ::placeholder{color:#5b6472;}
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#0A0D13">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" fill="#0A0D13"/>
+    <rect x="30" y="34" width="6" height="30" fill="#E4611F" transform="skewX(-12)"/>
+    <rect x="42" y="34" width="6" height="30" fill="#E4611F" transform="skewX(-12)"/>
+    <rect x="30" y="76" width="60" height="6" rx="3" fill="#e7e9ed"/>
+    <rect x="30" y="88" width="40" height="5" rx="2.5" fill="#5b6472"/>
+  </svg>
+</template>
+</helmet>
+
+<div style="background:#0A0D13;min-height:100vh;overflow-x:hidden">
+
+<!-- HEADER -->
+<header data-screen-label="Header" style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between;max-width:1400px;margin:0 auto;padding:20px clamp(16px,4vw,32px)">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="display:flex;gap:4px">
+      <span style="width:6px;height:30px;background:{{accent}};transform:skewX(-12deg);display:inline-block"></span>
+      <span style="width:6px;height:30px;background:{{accent}};transform:skewX(-12deg);display:inline-block"></span>
+    </div>
+    <div>
+      <div style="color:#f3f5f7;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.5px;line-height:1.2">PRODUCTION SUPPORT GROUP</div>
+      <div style="color:#8b94a3;font-size:11.5px;letter-spacing:0.3px">3D & Interactive Production Partner</div>
+    </div>
+  </div>
+  <nav style="display:flex;flex-wrap:wrap;gap:clamp(14px,2.4vw,28px);font-size:14px;color:#c3c9d1;font-weight:500">
+    <a href="#home" style="color:{{accent}}">Home</a>
+    <a href="#support" style="color:#c3c9d1">How We Support</a>
+    <a href="#capabilities" style="color:#c3c9d1">Our Capabilities</a>
+    <a href="#workflow" style="color:#c3c9d1">Workflow</a>
+    <a href="#partnership" style="color:#c3c9d1">Partnership Models</a>
+    <a href="#resources" style="color:#c3c9d1">Resources</a>
+    <a href="#about" style="color:#c3c9d1">About</a>
+    <a href="#contact" style="color:#c3c9d1">Contact</a>
+  </nav>
+  <a href="#contact" style="background:{{accent}};color:#fff;font-weight:600;font-size:13.5px;padding:11px 20px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap">Start a Project <span>&#8594;</span></a>
+</header>
+
+<!-- HERO -->
+<section id="home" data-screen-label="Hero" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(24px,4vw,56px);max-width:1400px;margin:0 auto;padding:clamp(24px,4vw,40px) clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <div style="flex:1 1 420px;min-width:320px">
+    <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(38px,5.2vw,58px);line-height:1.08;color:#f3f5f7;margin:0 0 18px">Your Production<br/><span style="color:{{accent}}">Support Partner</span></h1>
+    <p style="color:#d7dbe1;font-size:clamp(16px,1.6vw,19px);line-height:1.5;max-width:520px;margin:0 0 16px">Helping animation studios and interactive companies deliver more, with confidence.</p>
+    <p style="color:#8b94a3;font-size:15px;line-height:1.65;max-width:520px;margin:0 0 30px">We provide reliable 3D animation, Unreal Engine and Web interactive production support, so you can scale your projects without boundaries.</p>
+    <a href="#contact" style="background:{{accent}};color:#fff;font-weight:600;font-size:15px;padding:15px 26px;border-radius:9px;display:inline-flex;align-items:center;gap:10px">Let's Collaborate <span>&#8594;</span></a>
+  </div>
+  <div style="flex:1 1 480px;min-width:320px">
+    <image-slot id="hero-collage" shape="rounded" radius="18" style="width:100%;height:clamp(220px,32vw,360px)" placeholder="Drop hero collage: 3D renders, UI screens, VR photo"></image-slot>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" data-screen-label="About" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:clamp(24px,3.5vw,44px)">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px)">
+
+      <div style="flex:1 1 300px;min-width:280px">
+        <div style="color:{{accent}};font-weight:700;font-size:13px;letter-spacing:1.5px;margin-bottom:10px">ABOUT ME</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(24px,2.4vw,30px);color:#f3f5f7;margin:0 0 8px">Hi, I'm Ali Joorabchian.</h2>
+        <div style="color:{{accent}};font-weight:600;font-size:15px;margin-bottom:16px">3D Production Lead & Technical Art Specialist.</div>
+        <p style="color:#9aa4b2;font-size:14.5px;line-height:1.7;margin:0 0 14px">With over 15 years of experience in 3D animation, software development, and interactive production, I help studios and companies overcome complex pipeline challenges and bottlenecks across cinematic production and real-time.</p>
+        <p style="color:#9aa4b2;font-size:14.5px;line-height:1.7;margin:0 0 22px">Production Support Group is a mark of trust — we support existing production pipelines and provide reliable help across 3D animation, real-time experiences and web-interactive solutions: pipeline tools, plugins and scalability, while maintaining quality, confidentiality and deadlines.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+          <button onClick="{{ noop }}" style="background:{{accent}};color:#fff;border:none;font-weight:600;font-size:14px;padding:13px 20px;border-radius:9px;display:inline-flex;align-items:center;gap:10px;cursor:pointer">
+            <span style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.25);display:inline-flex;align-items:center;justify-content:center;font-size:9px">&#9654;</span> Introduction Video
+          </button>
+          <a href="#" style="color:#c3c9d1;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px">Download CV <span>&#8595;</span></a>
+        </div>
+      </div>
+
+      <div style="flex:2.2 1 560px;min-width:300px">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;margin-bottom:28px">
+
+          <div style="flex:1 1 190px;max-width:220px;background:#171B24;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span style="color:#e7e9ed;font-size:12.5px;font-weight:600">3D Animation<br/>15+ Years</span></div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><line x1="10.5" y1="9.5" x2="13.5" y2="14.5"/></svg><span style="color:#e7e9ed;font-size:12.5px;font-weight:600">Pipeline<br/>Expertise</span></div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 1-.5 2.6l1.6 1.4-1.5 2.6-2-.7a7 7 0 0 1-2.2 1.3L14 22h-3l-.4-2.2a7 7 0 0 1-2.2-1.3l-2 .7-1.5-2.6 1.6-1.4A7 7 0 0 1 6 12"/></svg><span style="color:#e7e9ed;font-size:12.5px;font-weight:600">Engineering<br/>Mindset</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span style="color:#e7e9ed;font-size:12.5px;font-weight:600">Interactive<br/>Studio</span></div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto">
+            <image-slot id="avatar-photo" shape="circle" style="width:110px;height:110px" placeholder="Portrait photo"></image-slot>
+            <div style="color:#f3f5f7;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.5px">TEDDY LAQ</div>
+            <div style="color:#8b94a3;font-size:12px">3D Art Director</div>
+          </div>
+
+          <div style="flex:1 1 220px;max-width:250px;background:#171B24;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5"/><line x1="12" y1="3" x2="12" y2="12"/><line x1="12" y1="12" x2="20" y2="7.5"/><line x1="12" y1="12" x2="4" y2="7.5"/></svg><span style="color:#e7e9ed;font-size:13px;font-weight:600">3D Production & Animation</span></div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span style="color:#e7e9ed;font-size:13px;font-weight:600">Real-Time (Unreal Engine)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span style="color:#e7e9ed;font-size:13px;font-weight:600">WebGL & Interactive</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><polyline points="5,17 9,13 12,15.5 15,12.5 19,16"/></svg><span style="color:#e7e9ed;font-size:13px;font-weight:600">Technical Visualization</span></div>
+          </div>
+        </div>
+
+        <div style="position:relative;padding:8px 10px" style-before="content:'';position:absolute;top:38px;left:24px;right:24px;height:1px;background:rgba(255,255,255,0.14);z-index:0">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;position:relative;z-index:1">
+            <sc-for list="{{ pipelineSteps }}" as="step" hint-placeholder-count="7">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:76px">
+                <div style="width:52px;height:52px;border-radius:50%;background:#12161F;border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center">{{ step.icon }}</div>
+                <div style="color:#c3c9d1;font-size:12px;text-align:center;font-weight:500">{{ step.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 260px;min-width:260px;display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;gap:14px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6" style="flex-shrink:0"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><rect x="2" y="14" width="10" height="7" rx="3"/><rect x="12" y="14" width="10" height="7" rx="3"/></svg>
+          <p style="color:#9aa4b2;font-size:13.5px;line-height:1.6;margin:0">I lead a dedicated team of 30+ artists, technical artists and developers across 3D, engine and web interactive pipelines.</p>
+        </div>
+        <div style="display:flex;gap:14px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6" style="flex-shrink:0"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 1-.5 2.6l1.6 1.4-1.5 2.6-2-.7a7 7 0 0 1-2.2 1.3L14 22h-3l-.4-2.2a7 7 0 0 1-2.2-1.3l-2 .7-1.5-2.6 1.6-1.4A7 7 0 0 1 6 12"/></svg>
+          <p style="color:#9aa4b2;font-size:13.5px;line-height:1.6;margin:0">We adapt to your workflows, invest in your process, and deliver consistent quality at every stage.</p>
+        </div>
+        <div style="display:flex;gap:14px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6" style="flex-shrink:0"><path d="M12 3 20 6 20 12C20 17 16.5 20.5 12 21 7.5 20.5 4 17 4 12L4 6Z"/></svg>
+          <p style="color:#9aa4b2;font-size:13.5px;line-height:1.6;margin:0">We guarantee scale & flexibility — high-quality, production-ready work you can rely on.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I BRING -->
+<section data-screen-label="Bring" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <h2 style="text-align:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,32px);color:#f3f5f7;margin:0 0 34px">What I Bring to <span style="color:{{accent}}">Your Pipeline</span></h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+    <sc-for list="{{ bringCards }}" as="card" hint-placeholder-count="6">
+      <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:26px 20px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:12px;background:#171B24;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">{{ card.icon }}</div>
+        <div style="color:#f3f5f7;font-weight:700;font-size:15.5px;margin-bottom:8px">{{ card.title }}</div>
+        <div style="color:#8b94a3;font-size:13.5px;line-height:1.6">{{ card.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- SUPPORT TEAMS -->
+<section id="support" data-screen-label="Support" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <h2 style="text-align:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,32px);color:#f3f5f7;margin:0 0 34px">We Support <span style="color:{{accent}}">Creative</span> & <span style="color:{{accent}}">Technical</span> Teams</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+    <sc-for list="{{ teamCards }}" as="team" hint-placeholder-count="3">
+      <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <div style="width:46px;height:46px;border-radius:10px;background:#171B24;display:flex;align-items:center;justify-content:center;flex-shrink:0">{{ team.icon }}</div>
+          <div style="color:#f3f5f7;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px">{{ team.title }}</div>
+        </div>
+        <p style="color:#8b94a3;font-size:14px;line-height:1.6;margin:0 0 18px">{{ team.question }}</p>
+        <sc-for list="{{ team.items }}" as="item" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="2.4"><polyline points="5,13 9,17 19,7"/></svg>
+            <span style="color:#c3c9d1;font-size:13.5px">{{ item }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- WHY PARTNERS -->
+<section data-screen-label="Why" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <h2 style="text-align:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,32px);color:#f3f5f7;margin:0 0 34px">Why <span style="color:{{accent}}">Partners</span> Choose to Work With Us</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px">
+    <sc-for list="{{ whyCards }}" as="w" hint-placeholder-count="6">
+      <div style="text-align:center;padding:10px">
+        <div style="width:56px;height:56px;border-radius:50%;background:#12161F;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">{{ w.icon }}</div>
+        <div style="color:#f3f5f7;font-weight:700;font-size:14.5px;margin-bottom:6px">{{ w.title }}</div>
+        <div style="color:#8b94a3;font-size:13px;line-height:1.55">{{ w.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- CORE CAPABILITIES -->
+<section id="capabilities" data-screen-label="Capabilities" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <h2 style="text-align:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,32px);color:#f3f5f7;margin:0 0 34px">Our <span style="color:{{accent}}">Core</span> Production Capabilities</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px">
+
+    <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5"/></svg>
+        <span style="color:#f3f5f7;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.5px">3D PRODUCTION</span>
+      </div>
+      <image-slot id="cap-3d" shape="rounded" radius="12" style="width:100%;height:220px;margin-bottom:18px" placeholder="Industrial 3D model render"></image-slot>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;margin-bottom:16px">
+        <sc-for list="{{ prodIcons }}" as="ic" hint-placeholder-count="7">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:52px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#171B24;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center">{{ ic.icon }}</div>
+            <div style="color:#8b94a3;font-size:10.5px;text-align:center">{{ ic.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="color:#8b94a3;font-size:13.5px;line-height:1.6;margin:0">Complete 3D production pipeline from CAD data to final photorealistic render, optimized for industrial and technical visualization.</p>
+    </div>
+
+    <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="3"/><line x1="7" y1="8" x2="17" y2="8"/></svg>
+        <span style="color:#f3f5f7;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.5px">UNREAL ENGINE</span>
+      </div>
+      <image-slot id="cap-unreal" shape="rounded" radius="12" style="width:100%;height:220px;margin-bottom:18px" placeholder="Unreal Engine environment screenshot"></image-slot>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;margin-bottom:16px">
+        <sc-for list="{{ unrealIcons }}" as="ic" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:70px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#171B24;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center">{{ ic.icon }}</div>
+            <div style="color:#8b94a3;font-size:10.5px;text-align:center">{{ ic.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="color:#8b94a3;font-size:13.5px;line-height:1.6;margin:0">Real-time environments and interactive experiences built with Unreal Engine, optimized for performance and quality.</p>
+    </div>
+
+    <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+        <span style="color:#f3f5f7;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.5px">WEBGL</span>
+      </div>
+      <image-slot id="cap-webgl" shape="rounded" radius="12" style="width:100%;height:220px;margin-bottom:18px" placeholder="WebGL product configurator screenshot"></image-slot>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;margin-bottom:16px">
+        <sc-for list="{{ webglIcons }}" as="ic" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:70px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#171B24;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center">{{ ic.icon }}</div>
+            <div style="color:#8b94a3;font-size:10.5px;text-align:center">{{ ic.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="color:#8b94a3;font-size:13.5px;line-height:1.6;margin:0">Optimized 3D content and interactive applications for the web, delivering smooth performance across all browsers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section data-screen-label="Selected Work" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px)">
+  <h2 style="text-align:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,32px);color:#f3f5f7;margin:0 0 34px">Selected Work <span style="color:#8b94a3;font-weight:500;font-size:0.6em">(Production Support Examples)</span></h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:22px">
+    <sc-for list="{{ workItems }}" as="work" hint-placeholder-count="5">
+      <div>
+        <div style="position:relative">
+          <image-slot id="{{ work.id }}" shape="rounded" radius="12" style="width:100%;height:170px" placeholder="{{ work.placeholder }}"></image-slot>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(10,13,19,0.55);border:1.5px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="6,4 20,12 6,20"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="color:#e7e9ed;font-weight:600;font-size:14px;margin-top:12px">{{ work.title }}</div>
+        <div style="color:#8b94a3;font-size:12.5px">{{ work.tag }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex;justify-content:center;gap:8px">
+    <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="5">
+      <button onClick="{{ dot.onClick }}" style="width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;background:{{ dot.active }}"></button>
+    </sc-for>
+  </div>
+</section>
+
+<!-- WORKFLOW + PARTNERSHIP -->
+<section id="workflow" data-screen-label="Workflow" style="max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,72px);display:flex;flex-wrap:wrap;gap:36px">
+  <div style="flex:1.4 1 480px;min-width:320px">
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,28px);color:#f3f5f7;margin:0 0 30px">How We <span style="color:{{accent}}">Work</span> Together</h2>
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px">
+      <sc-for list="{{ workflowSteps }}" as="step" hint-placeholder-count="5">
+        <div style="display:contents">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:104px;text-align:center">
+          <div style="width:52px;height:52px;border-radius:50%;background:#12161F;border:1.5px solid {{accent}};display:flex;align-items:center;justify-content:center">{{ step.icon }}</div>
+          <div style="color:#f3f5f7;font-weight:700;font-size:12.5px">{{ step.title }}</div>
+          <div style="color:#8b94a3;font-size:11.5px;line-height:1.4">{{ step.desc }}</div>
+        </div>
+        <sc-if value="{{ step.showArrow }}" hint-placeholder-val="{{ true }}">
+          <div style="color:{{accent}};font-size:18px;padding-top:16px">&#8594;</div>
+        </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px">
+      <sc-for list="{{ badges }}" as="b" hint-placeholder-count="4">
+        <div style="display:flex;gap:12px">
+          <div style="width:38px;height:38px;border-radius:9px;background:#12161F;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0">{{ b.icon }}</div>
+          <div>
+            <div style="color:#e7e9ed;font-weight:600;font-size:13.5px;margin-bottom:3px">{{ b.title }}</div>
+            <div style="color:#8b94a3;font-size:12px;line-height:1.5">{{ b.desc }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="flex:1 1 320px;min-width:280px">
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,28px);color:#f3f5f7;margin:0 0 30px">Partnership <span style="color:{{accent}}">Models</span></h2>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ partnerCards }}" as="p" hint-placeholder-count="3">
+        <div style="background:#12161F;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start">
+          <div style="width:44px;height:44px;border-radius:10px;background:#171B24;display:flex;align-items:center;justify-content:center;flex-shrink:0">{{ p.icon }}</div>
+          <div>
+            <div style="color:#f3f5f7;font-weight:700;font-size:15px;margin-bottom:6px">{{ p.title }}</div>
+            <div style="color:#8b94a3;font-size:13px;line-height:1.55">{{ p.desc }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" data-screen-label="Footer" style="border-top:1px solid rgba(255,255,255,0.07);margin-top:20px">
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,5vw,60px) clamp(16px,4vw,32px) 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px">
+    <div>
+      <div style="display:flex;gap:4px;margin-bottom:14px">
+        <span style="width:6px;height:26px;background:{{accent}};transform:skewX(-12deg);display:inline-block"></span>
+        <span style="width:6px;height:26px;background:{{accent}};transform:skewX(-12deg);display:inline-block"></span>
+      </div>
+      <p style="color:#8b94a3;font-size:13.5px;line-height:1.6;max-width:260px">We don't compete with your brand. We work behind the scenes to make you look great.</p>
+    </div>
+    <div>
+      <div style="color:#f3f5f7;font-weight:700;font-size:15px;margin-bottom:16px">Quick Links</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="#support" style="color:#9aa4b2;font-size:13.5px">How We Support</a>
+        <a href="#capabilities" style="color:#9aa4b2;font-size:13.5px">Our Capabilities</a>
+        <a href="#workflow" style="color:#9aa4b2;font-size:13.5px">Workflow</a>
+        <a href="#partnership" style="color:#9aa4b2;font-size:13.5px">Partnership Models</a>
+        <a href="#resources" style="color:#9aa4b2;font-size:13.5px">Resources</a>
+        <a href="#contact" style="color:#9aa4b2;font-size:13.5px">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="color:#f3f5f7;font-weight:700;font-size:15px;margin-bottom:16px">Get in Touch</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,7 12,13 21,7"/></svg><span style="color:#9aa4b2;font-size:13px">hello@productionsupport.group</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.8"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="M9 8.5 15 15.5"/></svg><span style="color:#9aa4b2;font-size:13px">+90 850 309 3377</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21C12 21 19 14.5 19 9A7 7 0 0 0 5 9C5 14.5 12 21 12 21Z"/></svg><span style="color:#9aa4b2;font-size:13px">Istanbul, Turkey</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E4611F" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span style="color:#9aa4b2;font-size:13px">Working with partners worldwide</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="color:#f3f5f7;font-weight:700;font-size:15px;margin-bottom:16px">Start a Conversation</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <input value="{{ form.name }}" onChange="{{ setName }}" placeholder="Your Name" style="flex:1 1 100px;background:#171B24;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:#e7e9ed;font-size:12.5px"/>
+          <input value="{{ form.email }}" onChange="{{ setEmail }}" placeholder="Your Email" style="flex:1 1 100px;background:#171B24;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:#e7e9ed;font-size:12.5px"/>
+        </div>
+        <input value="{{ form.company }}" onChange="{{ setCompany }}" placeholder="Company / Studio Name" style="background:#171B24;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:#e7e9ed;font-size:12.5px"/>
+        <textarea value="{{ form.message }}" onChange="{{ setMessage }}" placeholder="Tell us about your project..." rows="3" style="background:#171B24;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;color:#e7e9ed;font-size:12.5px;resize:none;font-family:'Manrope',sans-serif"></textarea>
+        <button onClick="{{ submitForm }}" style="background:{{accent}};color:#fff;border:none;font-weight:600;font-size:13.5px;padding:12px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">{{ submitLabel }} <span>+</span></button>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1400px;margin:0 auto;padding:18px clamp(16px,4vw,32px);border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
+    <div style="color:#6b7481;font-size:12.5px">&copy; 2024 Production Support Group. All rights reserved.</div>
+    <div style="display:flex;gap:10px">
+      <a href="#" style="width:32px;height:32px;border-radius:50%;background:#171B24;display:flex;align-items:center;justify-content:center;color:#c3c9d1;font-size:11px;font-weight:700">in</a>
+      <a href="#" style="width:32px;height:32px;border-radius:50%;background:#171B24;display:flex;align-items:center;justify-content:center;color:#c3c9d1;font-size:11px;font-weight:700">Be</a>
+      <a href="#" style="width:32px;height:32px;border-radius:50%;background:#171B24;display:flex;align-items:center;justify-content:center;color:#c3c9d1"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg></a>
+      <a href="#" style="width:32px;height:32px;border-radius:50%;background:#171B24;display:flex;align-items:center;justify-content:center;color:#c3c9d1;font-size:13px;font-weight:700">X</a>
+    </div>
+  </div>
+</footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E4611F&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#E4611F&quot;,&quot;#EB5B2A&quot;,&quot;#D94E1F&quot;,&quot;#E88A3D&quot;]}}">
+class Component extends DCLogic {
+  state = {
+    form: { name: '', email: '', company: '', message: '' },
+    submitted: false,
+    activeDot: 0
+  };
+
+  noop = () => {};
+
+  setName = (e) => this.setState(s => ({ form: { ...s.form, name: e.target.value } }));
+  setEmail = (e) => this.setState(s => ({ form: { ...s.form, email: e.target.value } }));
+  setCompany = (e) => this.setState(s => ({ form: { ...s.form, company: e.target.value } }));
+  setMessage = (e) => this.setState(s => ({ form: { ...s.form, message: e.target.value } }));
+  submitForm = () => this.setState({ submitted: true });
+
+  icon(paths, viewBox) {
+    return React.createElement('svg', { width: 16, height: 16, viewBox: viewBox || '0 0 24 24', fill: 'none', stroke: '#E4611F', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' }, paths);
+  }
+
+  renderVals() {
+    const accent = this.props.accentColor || '#E4611F';
+    const s = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: accent, strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+    const c = (children) => React.createElement('svg', s, children);
+    const cube = c([React.createElement('polygon', { key: 1, points: '12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5' }), React.createElement('line', { key: 2, x1: 12, y1: 3, x2: 12, y2: 12 }), React.createElement('line', { key: 3, x1: 12, y1: 12, x2: 20, y2: 7.5 }), React.createElement('line', { key: 4, x1: 12, y1: 12, x2: 4, y2: 7.5 })]);
+    const target = c([React.createElement('circle', { key: 1, cx: 12, cy: 12, r: 9 }), React.createElement('circle', { key: 2, cx: 12, cy: 12, r: 5 }), React.createElement('circle', { key: 3, cx: 12, cy: 12, r: 1.4, fill: accent })]);
+    const users = c([React.createElement('circle', { key: 1, cx: 8, cy: 8, r: 3 }), React.createElement('circle', { key: 2, cx: 16, cy: 8, r: 3 }), React.createElement('rect', { key: 3, x: 2, y: 14, width: 10, height: 7, rx: 3 }), React.createElement('rect', { key: 4, x: 12, y: 14, width: 10, height: 7, rx: 3 })]);
+    const shieldX = c([React.createElement('path', { key: 1, d: 'M12 3 20 6 20 12C20 17 16.5 20.5 12 21 7.5 20.5 4 17 4 12L4 6Z' }), React.createElement('line', { key: 2, x1: 9.5, y1: 10, x2: 14.5, y2: 15 }), React.createElement('line', { key: 3, x1: 14.5, y1: 10, x2: 9.5, y2: 15 })]);
+    const shield = c([React.createElement('path', { key: 1, d: 'M12 3 20 6 20 12C20 17 16.5 20.5 12 21 7.5 20.5 4 17 4 12L4 6Z' })]);
+    const globe = c([React.createElement('circle', { key: 1, cx: 12, cy: 12, r: 9 }), React.createElement('ellipse', { key: 2, cx: 12, cy: 12, rx: 4, ry: 9 }), React.createElement('line', { key: 3, x1: 3, y1: 12, x2: 21, y2: 12 })]);
+    const chart = c([React.createElement('polyline', { key: 1, points: '4,17 9,11 13,14 20,6' }), React.createElement('polyline', { key: 2, points: '15,6 20,6 20,11' })]);
+    const gear = c([React.createElement('circle', { key: 1, cx: 12, cy: 12, r: 3 }), React.createElement('path', { key: 2, d: 'M19 12a7 7 0 0 1-.5 2.6l1.6 1.4-1.5 2.6-2-.7a7 7 0 0 1-2.2 1.3L14 22h-3l-.4-2.2a7 7 0 0 1-2.2-1.3l-2 .7-1.5-2.6 1.6-1.4A7 7 0 0 1 6 12' })]);
+    const clock = c([React.createElement('circle', { key: 1, cx: 12, cy: 12, r: 9 }), React.createElement('line', { key: 2, x1: 12, y1: 12, x2: 12, y2: 7 }), React.createElement('line', { key: 3, x1: 12, y1: 12, x2: 15.5, y2: 13.5 })]);
+    const mail = c([React.createElement('rect', { key: 1, x: 3, y: 5, width: 18, height: 14, rx: 2 }), React.createElement('polyline', { key: 2, points: '3,7 12,13 21,7' })]);
+    const monitor = c([React.createElement('rect', { key: 1, x: 3, y: 4, width: 18, height: 13, rx: 2 }), React.createElement('line', { key: 2, x1: 8, y1: 21, x2: 16, y2: 21 }), React.createElement('line', { key: 3, x1: 12, y1: 17, x2: 12, y2: 21 })]);
+    const code = c([React.createElement('polyline', { key: 1, points: '9,8 4,12 9,16' }), React.createElement('polyline', { key: 2, points: '15,8 20,12 15,16' })]);
+    const sliders = c([React.createElement('line', { key: 1, x1: 7, y1: 4, x2: 7, y2: 20 }), React.createElement('circle', { key: 2, cx: 7, cy: 9, r: 2 }), React.createElement('line', { key: 3, x1: 12, y1: 4, x2: 12, y2: 20 }), React.createElement('circle', { key: 4, cx: 12, cy: 15, r: 2 }), React.createElement('line', { key: 5, x1: 17, y1: 4, x2: 17, y2: 20 }), React.createElement('circle', { key: 6, cx: 17, cy: 7, r: 2 })]);
+    const layers = c([React.createElement('polygon', { key: 1, points: '12,3 21,8 12,13 3,8' }), React.createElement('polyline', { key: 2, points: '3,13 12,18 21,13' }), React.createElement('polyline', { key: 3, points: '3,17 12,22 21,17' })]);
+    const grid = c([React.createElement('rect', { key: 1, x: 3, y: 3, width: 8, height: 8, rx: 1.5 }), React.createElement('rect', { key: 2, x: 13, y: 3, width: 8, height: 8, rx: 1.5 }), React.createElement('rect', { key: 3, x: 3, y: 13, width: 8, height: 8, rx: 1.5 }), React.createElement('rect', { key: 4, x: 13, y: 13, width: 8, height: 8, rx: 1.5 })]);
+    const uv = c([React.createElement('rect', { key: 1, x: 3, y: 3, width: 18, height: 18, rx: 2 }), React.createElement('line', { key: 2, x1: 3, y1: 12, x2: 21, y2: 12 }), React.createElement('line', { key: 3, x1: 12, y1: 3, x2: 12, y2: 21 })]);
+    const droplet = c([React.createElement('path', { key: 1, d: 'M12 2C12 2 5 10 5 15A7 7 0 0 0 19 15C19 10 12 2 12 2Z' })]);
+    const rig = c([React.createElement('circle', { key: 1, cx: 6, cy: 6, r: 2.5 }), React.createElement('circle', { key: 2, cx: 18, cy: 18, r: 2.5 }), React.createElement('line', { key: 3, x1: 8, y1: 8, x2: 16, y2: 16 }), React.createElement('circle', { key: 4, cx: 12, cy: 12, r: 1.5 })]);
+    const activity = c([React.createElement('polyline', { key: 1, points: '3,12 8,12 10,6 14,18 16,12 21,12' })]);
+    const render = c([React.createElement('rect', { key: 1, x: 3, y: 4, width: 18, height: 16, rx: 2 }), React.createElement('circle', { key: 2, cx: 9, cy: 10, r: 2 }), React.createElement('polyline', { key: 3, points: '4,18 9,13 13,17 16,14 20,18' })]);
+    const cpu = c([React.createElement('rect', { key: 1, x: 6, y: 6, width: 12, height: 12, rx: 2 }), React.createElement('rect', { key: 2, x: 10, y: 10, width: 4, height: 4 }), React.createElement('line', { key: 3, x1: 12, y1: 1, x2: 12, y2: 4 }), React.createElement('line', { key: 4, x1: 12, y1: 20, x2: 12, y2: 23 }), React.createElement('line', { key: 5, x1: 1, y1: 12, x2: 4, y2: 12 }), React.createElement('line', { key: 6, x1: 20, y1: 12, x2: 23, y2: 12 })]);
+    const tool = gear;
+    const mailSmall = mail;
+    const envelope = mail;
+    const download = c([React.createElement('line', { key: 1, x1: 12, y1: 3, x2: 12, y2: 15 }), React.createElement('polyline', { key: 2, points: '7,10 12,15 17,10' }), React.createElement('line', { key: 3, x1: 5, y1: 19, x2: 19, y2: 19 })]);
+
+    const bringCards = [
+      { icon: cube, title: 'Technical Expertise', desc: 'Deep experience in 3D, real-time, and Web technologies.' },
+      { icon: target, title: 'Production Mindset', desc: 'Focused on pipeline integration, efficiency, and measurable results.' },
+      { icon: users, title: 'Collaborative Approach', desc: 'I work closely with your team to ensure we hit your studio goals.' },
+      { icon: shieldX, title: 'Reliable & Professional', desc: 'NDAs respected, timelines met, quality you can count on.' },
+      { icon: globe, title: 'Global Experience', desc: 'Worked with international clients across different timezones.' },
+      { icon: chart, title: 'Continuous Improvement', desc: 'Always learning and adapting to the latest workflows and tools.' }
+    ];
+
+    const teamCards = [
+      { icon: cube, title: '3D Animation Studios', question: 'Need extra production capacity for your industrial or commercial projects?', items: ['3D Animation', 'Modeling & Texturing', 'Rigging & Rendering', 'Technical Visualization'] },
+      { icon: monitor, title: 'Interactive Development Teams', question: 'Need high-quality 3D content for your real-time projects?', items: ['Unreal Engine Assets', 'Real-time Optimization', 'WebGL / WebXR Content', 'Configurators & Applications'] },
+      { icon: layers, title: 'Agencies & Creative Studios', question: 'Need a reliable behind-the-scenes production partner?', items: ['White Label Production', 'No Direct Client Contact', 'Focus on Your Client', 'We Handle the Production'] }
+    ];
+
+    const whyCards = [
+      { icon: shield, title: 'Confidential & Secure', desc: 'Your projects are safe with our NDA-protected workflow.' },
+      { icon: users, title: 'Flexible & Scalable', desc: 'Scale up or down based on your project needs.' },
+      { icon: target, title: 'Production Focused', desc: 'We integrate smoothly into your pipeline and deadlines.' },
+      { icon: gear, title: 'Consistent Quality', desc: 'High production standards you can rely on.' },
+      { icon: clock, title: 'Reliable Delivery', desc: 'We respect timelines and communicate clearly.' },
+      { icon: globe, title: 'Global Collaboration', desc: 'Experienced in working with teams worldwide across different timezones.' }
+    ];
+
+    const prodIcons = [
+      { icon: layers, label: 'CAD / Data' }, { icon: activity, label: 'Modeling' }, { icon: uv, label: 'UV' },
+      { icon: droplet, label: 'Texturing' }, { icon: rig, label: 'Rigging' }, { icon: activity, label: 'Animation' }, { icon: render, label: 'Rendering' }
+    ];
+    const unrealIcons = [
+      { icon: monitor, label: 'Environment Creation' }, { icon: code, label: 'Blueprint Scripting' }, { icon: cpu, label: 'Optimization' }, { icon: tool, label: 'Tools & Deployment' }
+    ];
+    const webglIcons = [
+      { icon: cube, label: '3D Optimization' }, { icon: monitor, label: 'Product Viewer' }, { icon: sliders, label: 'Configurator' }, { icon: globe, label: 'Browser Performance' }
+    ];
+
+    const pipelineSteps = [
+      { icon: layers, label: 'CAD / Data' }, { icon: cube, label: 'Modeling' }, { icon: droplet, label: 'Texturing' },
+      { icon: rig, label: 'Rigging' }, { icon: activity, label: 'Animation' }, { icon: clock, label: 'Real-Time' }, { icon: React.createElement('svg', { width: 18, height: 18, viewBox: '0 0 24 24', fill: accent }, React.createElement('polygon', { points: '6,4 20,12 6,20' })), label: 'Delivery' }
+    ];
+
+    const workItems = [
+      { id: 'work-1', title: 'Industrial Machine Animation', tag: '3D Animation', placeholder: 'Industrial machine render' },
+      { id: 'work-2', title: 'Factory Real-time Environment', tag: 'Unreal Engine', placeholder: 'Factory environment screenshot' },
+      { id: 'work-3', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'Configurator screenshot' },
+      { id: 'work-4', title: 'Equipment Training Simulation', tag: 'Unreal Engine / VR', placeholder: 'Training simulation photo' },
+      { id: 'work-5', title: 'Exploded View Animation', tag: '3D Animation', placeholder: 'Exploded view render' }
+    ];
+
+    const dots = [0, 1, 2, 3, 4].map(i => ({ active: i === this.state.activeDot ? accent : 'rgba(255,255,255,0.2)', onClick: () => this.setState({ activeDot: i }) }));
+
+    const workflowSteps = [
+      { icon: mail, title: '1. Project Brief', desc: 'You share requirements and assets.', showArrow: true },
+      { icon: target, title: '2. Planning', desc: 'We analyze, plan resources and provide timeline.', showArrow: true },
+      { icon: gear, title: '3. Production', desc: 'Our team works while you stay in control.', showArrow: true },
+      { icon: users, title: '4. Review', desc: 'You review and provide feedback at every stage.', showArrow: true },
+      { icon: render, title: '5. Delivery', desc: 'Final delivery in your preferred format.', showArrow: false }
+    ];
+
+    const badges = [
+      { icon: envelope, title: 'Strict NDA Policy', desc: 'Your IP is always protected.' },
+      { icon: users, title: 'Professional Communication', desc: 'Clear, responsive and transparent.' },
+      { icon: gear, title: 'Pipeline Friendly', desc: 'We adapt to your tools and workflow.' },
+      { icon: target, title: 'Long-Term Relationships', desc: 'Many of our partners work with us for years.' }
+    ];
+
+    const partnerCards = [
+      { icon: monitor, title: 'Project-Based', desc: 'Perfect for one-time projects with specific deliverables.' },
+      { icon: users, title: 'Dedicated Team', desc: 'Extend your team with our dedicated artists & developers.' },
+      { icon: clock, title: 'Long-Term Partner', desc: 'Ongoing collaboration for continuous production support.' }
+    ];
+
+    return {
+      accent,
+      noop: this.noop,
+      pipelineSteps, bringCards, teamCards, whyCards, prodIcons, unrealIcons, webglIcons,
+      workItems, dots, workflowSteps, badges, partnerCards,
+      form: this.state.form, setName: this.setName, setEmail: this.setEmail, setCompany: this.setCompany, setMessage: this.setMessage,
+      submitForm: this.submitForm, submitLabel: this.state.submitted ? 'Sent — Thank you!' : 'Send Message'
+    };
+  }
+}
+</script>
+</body>
+</html>

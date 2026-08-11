@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+.psg-root,
+.psg-root * {
+  box-sizing: border-box;
+}
+
+.psg-root {
+  background: #0a0d13;
+  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.psg-root a {
+  color: #e4611f;
+  text-decoration: none;
+}
+
+.psg-root a:hover {
+  color: #f07a41;
+}
+
+.psg-root ::placeholder {
+  color: #5b6472;
+}
+
+.psg-root input,
+.psg-root textarea,
+.psg-root button {
+  font-family: inherit;
+}
