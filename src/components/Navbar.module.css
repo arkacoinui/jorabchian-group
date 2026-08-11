@@ -1,0 +1,126 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(5, 18, 28, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 24px;
+  gap: 20px;
+}
+
+.logo {
+  flex: none;
+  line-height: 1.1;
+}
+
+.logoTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.4px;
+}
+
+.logoSubtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  color: #ff683f;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.navLinks {
+  display: flex;
+  gap: 28px;
+  margin: 0 auto;
+}
+
+.navLink {
+  color: #8cb8c5;
+  font-size: 14px;
+  transition: color 0.18s;
+}
+
+.navLinkItalic {
+  font-style: italic;
+}
+
+.ctaButton {
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 7px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex: none;
+  background-color: #ff683f;
+}
+
+.hamburger {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: 0;
+  display: none;
+}
+
+.mobileMenu {
+  background: rgba(5, 18, 28, 0.98);
+  padding: 20px 24px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobileMenuInner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobileNavLink {
+  color: #8cb8c5;
+  font-size: 16px;
+}
+
+.mobileCtaButton {
+  background: #F57C00;
+  color: #fff;
+  padding: 13px 24px;
+  border-radius: 7px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+}
