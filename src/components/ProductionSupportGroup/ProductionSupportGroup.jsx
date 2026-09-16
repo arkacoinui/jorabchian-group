@@ -5,7 +5,6 @@ import VideoModal from './VideoModal';
 import {
   ActivityIcon,
   CheckIcon,
-  ChartIcon,
   CircuitLinkIcon,
   ClockIcon,
   CodeIcon,
@@ -29,7 +28,6 @@ import {
   SlidersIcon,
   TargetIcon,
   UsersIcon,
-  UvIcon,
   WindowBarIcon,
 } from './icons';
 
@@ -38,17 +36,15 @@ import avatarPhoto from '../../assets/images/avatar-photo.jpg';
 import cap3dImg from '../../assets/images/cap-3d.jpg';
 import capUnrealImg from '../../assets/images/cap-unreal.jpg';
 import capWebglImg from '../../assets/images/cap-webgl.jpg';
-import work1Img from '../../assets/images/work-1.jpg';
-import work2Img from '../../assets/images/work-2.jpg';
-import work3Img from '../../assets/images/work-3.jpg';
-import work4Img from '../../assets/images/work-4.jpg';
-import work5Img from '../../assets/images/work-5.jpg';
 
-import animation1Video from '../../assets/video/3danimation-1.mp4';
-import animation2Video from '../../assets/video/3danimation-2.mp4';
-import unreal1Video from '../../assets/video/unreal-1.mp4';
-import unreal2Video from '../../assets/video/unreal-2.mp4';
-import web1Video from '../../assets/video/web-1.mp4';
+import foodProcessingThumb from '../../assets/images/work-thumbs/food-processing.jpg';
+import renewableEnergyThumb from '../../assets/images/work-thumbs/renewable-energy.jpg';
+import drillingEquipmentThumb from '../../assets/images/work-thumbs/drilling-equipment.jpg';
+import oilGasProcessThumb from '../../assets/images/work-thumbs/oil-gas-process.jpg';
+import equipmentTrainingThumb from '../../assets/images/work-thumbs/equipment-training.jpg';
+import vrSafetyTrainingThumb from '../../assets/images/work-thumbs/vr-safety-training.jpg';
+import interactiveConfigThumb from '../../assets/images/work-thumbs/interactive-configuration.jpg';
+import productConfiguratorThumb from '../../assets/images/work-thumbs/product-configurator-webgl.jpg';
 
 // Real image paths — see the README for how to add or swap these.
 // Leave an entry `null` to keep the placeholder for that slot.
@@ -58,22 +54,17 @@ const IMAGES = {
   cap3d: cap3dImg,
   capUnreal: capUnrealImg,
   capWebgl: capWebglImg,
-  work1: work1Img,
-  work2: work2Img,
-  work3: work3Img,
-  work4: work4Img,
-  work5: work5Img,
 };
 
-// Selected Work thumbnails play the matching clip in the VideoModal.
-// Leave an entry `null` to keep that item as a static (non-clickable) image.
-const VIDEOS = {
-  work1: animation1Video,
-  work2: unreal1Video,
-  work3: web1Video,
-  work4: unreal2Video,
-  work5: animation2Video,
+// Core Capabilities demo reels (Vimeo IDs) — clicking a capability image plays
+// the matching reel in the VideoModal.
+const DEMO_REELS = {
+  cap3d: '1218499250', // DemoReel - 3d Animation
+  capUnreal: '1218499918', // DemoReel - Unreal
+  capWebgl: '1218500784', // DemoReel - WebGl
 };
+
+const INTRO_VIDEO_ID = '1222125920'; // Video introduction-L
 
 const NAV_LINKS = [
   { href: '#home', label: 'Home' },
@@ -81,7 +72,6 @@ const NAV_LINKS = [
   { href: '#capabilities', label: 'Our Capabilities' },
   { href: '#workflow', label: 'Workflow' },
   { href: '#partnership', label: 'Partnership Models' },
-  { href: '#resources', label: 'Resources' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -101,7 +91,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
   const accent = accentColor;
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [activeDot, setActiveDot] = useState(0);
   const [activeVideo, setActiveVideo] = useState(null);
 
   const updateField = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -114,7 +103,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
       { icon: <UsersIcon color={accent} />, title: 'Collaborative Approach', desc: 'I work closely with your team to ensure we hit your studio goals.' },
       { icon: <ShieldXIcon color={accent} />, title: 'Reliable & Professional', desc: 'NDAs respected, timelines met, quality you can count on.' },
       { icon: <GlobeIcon color={accent} />, title: 'Global Experience', desc: 'Worked with international clients across different timezones.' },
-      { icon: <ChartIcon color={accent} />, title: 'Continuous Improvement', desc: 'Always learning and adapting to the latest workflows and tools.' },
     ],
     [accent]
   );
@@ -157,9 +145,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
 
   const prodIcons = useMemo(
     () => [
-      { icon: <LayersIcon color={accent} />, label: 'CAD / Data' },
       { icon: <ActivityIcon color={accent} />, label: 'Modeling' },
-      { icon: <UvIcon color={accent} />, label: 'UV' },
       { icon: <DropletIcon color={accent} />, label: 'Texturing' },
       { icon: <RigIcon color={accent} />, label: 'Rigging' },
       { icon: <ActivityIcon color={accent} />, label: 'Animation' },
@@ -196,17 +182,20 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
       { icon: <RigIcon color={accent} />, label: 'Rigging' },
       { icon: <ActivityIcon color={accent} />, label: 'Animation' },
       { icon: <ClockIcon color={accent} />, label: 'Real-Time' },
-      { icon: <PlayTriangleIcon size={18} color={accent} />, label: 'Delivery' },
     ],
     [accent]
   );
 
   const workItems = [
-    { id: 'work-1', title: 'Industrial Machine Animation', tag: '3D Animation', placeholder: 'Industrial machine render', src: IMAGES.work1, video: VIDEOS.work1 },
-    { id: 'work-2', title: 'Factory Real-time Environment', tag: 'Unreal Engine', placeholder: 'Factory environment screenshot', src: IMAGES.work2, video: VIDEOS.work2 },
-    { id: 'work-3', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'Configurator screenshot', src: IMAGES.work3, video: VIDEOS.work3 },
-    { id: 'work-4', title: 'Equipment Training Simulation', tag: 'Unreal Engine / VR', placeholder: 'Training simulation photo', src: IMAGES.work4, video: VIDEOS.work4 },
-    { id: 'work-5', title: 'Exploded View Animation', tag: '3D Animation', placeholder: 'Exploded view render', src: IMAGES.work5, video: VIDEOS.work5 },
+    { id: 'work-food-processing', title: 'Food Processing', tag: '3D Animation', placeholder: 'Food processing line render', src: foodProcessingThumb, vimeoId: '1218517905' },
+    { id: 'work-renewable-energy', title: 'Renewable Energy', tag: '3D Animation', placeholder: 'Renewable energy render', src: renewableEnergyThumb, vimeoId: '1218518339' },
+    { id: 'work-drilling-equipment', title: 'Drilling Equipment', tag: '3D Animation', placeholder: 'Drilling equipment render', src: drillingEquipmentThumb, vimeoId: '1218521079' },
+    { id: 'work-oil-gas-process', title: 'Oil & Gas Process', tag: '3D Animation', placeholder: 'Oil & gas process render', src: oilGasProcessThumb, vimeoId: '1218523398' },
+    { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: null, vimeoId: '1218524563' },
+    { id: 'work-equipment-training', title: 'Equipment Training Simulation', tag: 'Unreal Engine / VR', placeholder: 'Equipment training simulation', src: equipmentTrainingThumb, vimeoId: '1218525467' },
+    { id: 'work-vr-safety-training', title: 'VR Safety Training', tag: 'Unreal Engine / VR', placeholder: 'VR safety training', src: vrSafetyTrainingThumb, vimeoId: '1218532267' },
+    { id: 'work-interactive-config', title: 'Interactive Configuration', tag: 'Web Interactive', placeholder: 'Interactive WebGL configurator', src: interactiveConfigThumb, vimeoId: '1218537166' },
+    { id: 'work-product-configurator', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'WebGL product configurator', src: productConfiguratorThumb, vimeoId: '1220185878' },
   ];
 
   const workflowSteps = useMemo(
@@ -225,7 +214,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
       { icon: <MailIcon color={accent} />, title: 'Strict NDA Policy', desc: 'Your IP is always protected.' },
       { icon: <UsersIcon color={accent} />, title: 'Professional Communication', desc: 'Clear, responsive and transparent.' },
       { icon: <GearIcon color={accent} />, title: 'Pipeline Friendly', desc: 'We adapt to your tools and workflow.' },
-      { icon: <TargetIcon color={accent} />, title: 'Long-Term Relationships', desc: 'Many of our partners work with us for years.' },
     ],
     [accent]
   );
@@ -260,6 +248,9 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             <span style={{ width: 6, height: 30, background: accent, transform: 'skewX(-12deg)', display: 'inline-block' }} />
           </div>
           <div>
+            <div style={{ color: accent, fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 11, letterSpacing: 1, lineHeight: 1.3 }}>
+              JOORABCHIAN
+            </div>
             <div style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5, lineHeight: 1.2 }}>
               PRODUCTION SUPPORT GROUP
             </div>
@@ -273,23 +264,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             </a>
           ))}
         </nav>
-        <a
-          href="#contact"
-          style={{
-            background: accent,
-            color: '#fff',
-            fontWeight: 600,
-            fontSize: 13.5,
-            padding: '11px 20px',
-            borderRadius: 8,
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            whiteSpace: 'nowrap',
-          }}
-        >
-          Start a Project <span>&#8594;</span>
-        </a>
       </header>
 
       {/* HERO */}
@@ -350,14 +324,10 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
                 With over 15 years of experience in 3D animation, software development, and interactive production, I help studios and companies
                 overcome complex pipeline challenges and bottlenecks across cinematic production and real-time.
               </p>
-              <p style={{ color: '#9aa4b2', fontSize: 14.5, lineHeight: 1.7, margin: '0 0 22px' }}>
-                Production Support Group is a mark of trust — we support existing production pipelines and provide reliable help across 3D
-                animation, real-time experiences and web-interactive solutions: pipeline tools, plugins and scalability, while maintaining quality,
-                confidentiality and deadlines.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'center', marginTop: 22 }}>
                 <button
                   type="button"
+                  onClick={() => setActiveVideo({ vimeoId: INTRO_VIDEO_ID, title: 'Introduction Video' })}
                   style={{
                     background: accent,
                     color: '#fff',
@@ -558,7 +528,26 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <CubeIcon color={accent} size={20} />
               <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>3D PRODUCTION</span>
             </div>
-            <PlaceholderImage label="Industrial 3D model render" shape="rounded" radius={12} src={IMAGES.cap3d} style={{ width: '100%', height: 220, marginBottom: 18 }} />
+            <div
+              style={{ position: 'relative', cursor: 'pointer', marginBottom: 18 }}
+              onClick={() => setActiveVideo({ vimeoId: DEMO_REELS.cap3d, title: '3D Animation Demoreel' })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveVideo({ vimeoId: DEMO_REELS.cap3d, title: '3D Animation Demoreel' });
+                }
+              }}
+              aria-label="Play 3D Animation demo reel"
+            >
+              <PlaceholderImage label="Industrial 3D model render" shape="rounded" radius={12} src={IMAGES.cap3d} style={{ width: '100%', height: 220 }} />
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+                <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(10,13,19,0.55)', border: '1.5px solid rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <PlayTriangleIcon size={16} color="#fff" />
+                </div>
+              </div>
+            </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'space-between', marginBottom: 16 }}>
               {prodIcons.map((ic) => (
                 <div key={ic.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 52 }}>
@@ -579,7 +568,26 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <MonitorIcon color={accent} size={20} />
               <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>UNREAL ENGINE</span>
             </div>
-            <PlaceholderImage label="Unreal Engine environment screenshot" shape="rounded" radius={12} src={IMAGES.capUnreal} style={{ width: '100%', height: 220, marginBottom: 18 }} />
+            <div
+              style={{ position: 'relative', cursor: 'pointer', marginBottom: 18 }}
+              onClick={() => setActiveVideo({ vimeoId: DEMO_REELS.capUnreal, title: 'Unreal Engine Demoreel' })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveVideo({ vimeoId: DEMO_REELS.capUnreal, title: 'Unreal Engine Demoreel' });
+                }
+              }}
+              aria-label="Play Unreal Engine demo reel"
+            >
+              <PlaceholderImage label="Unreal Engine environment screenshot" shape="rounded" radius={12} src={IMAGES.capUnreal} style={{ width: '100%', height: 220 }} />
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+                <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(10,13,19,0.55)', border: '1.5px solid rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <PlayTriangleIcon size={16} color="#fff" />
+                </div>
+              </div>
+            </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'space-between', marginBottom: 16 }}>
               {unrealIcons.map((ic) => (
                 <div key={ic.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 70 }}>
@@ -600,7 +608,26 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <GlobeIcon color={accent} size={20} />
               <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>WEBGL</span>
             </div>
-            <PlaceholderImage label="WebGL product configurator screenshot" shape="rounded" radius={12} src={IMAGES.capWebgl} style={{ width: '100%', height: 220, marginBottom: 18 }} />
+            <div
+              style={{ position: 'relative', cursor: 'pointer', marginBottom: 18 }}
+              onClick={() => setActiveVideo({ vimeoId: DEMO_REELS.capWebgl, title: 'WebGL Demoreel' })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveVideo({ vimeoId: DEMO_REELS.capWebgl, title: 'WebGL Demoreel' });
+                }
+              }}
+              aria-label="Play WebGL demo reel"
+            >
+              <PlaceholderImage label="WebGL product configurator screenshot" shape="rounded" radius={12} src={IMAGES.capWebgl} style={{ width: '100%', height: 220 }} />
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+                <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(10,13,19,0.55)', border: '1.5px solid rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <PlayTriangleIcon size={16} color="#fff" />
+                </div>
+              </div>
+            </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'space-between', marginBottom: 16 }}>
               {webglIcons.map((ic) => (
                 <div key={ic.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 70 }}>
@@ -623,21 +650,21 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
         <h2 style={sectionHeading}>
           Selected Work <span style={{ color: '#8b94a3', fontWeight: 500, fontSize: '0.6em' }}>(Production Support Examples)</span>
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 18, marginBottom: 22 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 18 }}>
           {workItems.map((work) => (
             <div key={work.id}>
               <div
-                style={{ position: 'relative', cursor: work.video ? 'pointer' : 'default' }}
-                onClick={() => work.video && setActiveVideo({ src: work.video, title: work.title })}
-                role={work.video ? 'button' : undefined}
-                tabIndex={work.video ? 0 : undefined}
+                style={{ position: 'relative', cursor: work.vimeoId ? 'pointer' : 'default' }}
+                onClick={() => work.vimeoId && setActiveVideo({ vimeoId: work.vimeoId, title: work.title })}
+                role={work.vimeoId ? 'button' : undefined}
+                tabIndex={work.vimeoId ? 0 : undefined}
                 onKeyDown={(e) => {
-                  if (work.video && (e.key === 'Enter' || e.key === ' ')) {
+                  if (work.vimeoId && (e.key === 'Enter' || e.key === ' ')) {
                     e.preventDefault();
-                    setActiveVideo({ src: work.video, title: work.title });
+                    setActiveVideo({ vimeoId: work.vimeoId, title: work.title });
                   }
                 }}
-                aria-label={work.video ? `Play video: ${work.title}` : undefined}
+                aria-label={work.vimeoId ? `Play video: ${work.title}` : undefined}
               >
                 <PlaceholderImage label={work.placeholder} shape="rounded" radius={12} src={work.src} style={{ width: '100%', height: 170 }} />
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
@@ -649,17 +676,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <div style={{ color: '#e7e9ed', fontWeight: 600, fontSize: 14, marginTop: 12 }}>{work.title}</div>
               <div style={{ color: '#8b94a3', fontSize: 12.5 }}>{work.tag}</div>
             </div>
-          ))}
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 8 }}>
-          {[0, 1, 2, 3, 4].map((i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActiveDot(i)}
-              aria-label={`Show work item ${i + 1}`}
-              style={{ width: 8, height: 8, borderRadius: '50%', border: 'none', padding: 0, cursor: 'pointer', background: i === activeDot ? accent : 'rgba(255,255,255,0.2)' }}
-            />
           ))}
         </div>
       </section>
@@ -731,9 +747,12 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
           }}
         >
           <div>
-            <div style={{ display: 'flex', gap: 4, marginBottom: 14 }}>
-              <span style={{ width: 6, height: 26, background: accent, transform: 'skewX(-12deg)', display: 'inline-block' }} />
-              <span style={{ width: 6, height: 26, background: accent, transform: 'skewX(-12deg)', display: 'inline-block' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ display: 'flex', gap: 4 }}>
+                <span style={{ width: 6, height: 26, background: accent, transform: 'skewX(-12deg)', display: 'inline-block' }} />
+                <span style={{ width: 6, height: 26, background: accent, transform: 'skewX(-12deg)', display: 'inline-block' }} />
+              </div>
+              <span style={{ color: accent, fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15 }}>Joorabchian Group</span>
             </div>
             <p style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6, maxWidth: 260 }}>
               We don&apos;t compete with your brand. We work behind the scenes to make you look great.
@@ -747,8 +766,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <a href="#capabilities" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Our Capabilities</a>
               <a href="#workflow" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Workflow</a>
               <a href="#partnership" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Partnership Models</a>
-              <a href="#resources" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Resources</a>
-              <a href="#contact" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Contact</a>
             </div>
           </div>
 
@@ -757,11 +774,11 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <MailIcon color={accent} size={16} />
-                <span style={{ color: '#9aa4b2', fontSize: 13 }}>hello@productionsupport.group</span>
+                <span style={{ color: '#9aa4b2', fontSize: 13 }}>Hello@joorabchian.com</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <DiagonalLinkIcon color={accent} size={16} />
-                <span style={{ color: '#9aa4b2', fontSize: 13 }}>+90 850 309 3377</span>
+                <span style={{ color: '#9aa4b2', fontSize: 13 }}>WhatsApp: +90 850 309 3377</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <PinIcon color={accent} size={16} />
@@ -822,27 +839,18 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             padding: '18px clamp(16px,4vw,32px)',
             borderTop: '1px solid rgba(255,255,255,0.06)',
             display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: 14,
+            justifyContent: 'center',
+            textAlign: 'center',
           }}
         >
-          <div style={{ color: '#6b7481', fontSize: 12.5 }}>&copy; 2024 Production Support Group. All rights reserved.</div>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <a href="#" style={{ width: 32, height: 32, borderRadius: '50%', background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c3c9d1', fontSize: 11, fontWeight: 700 }}>in</a>
-            <a href="#" style={{ width: 32, height: 32, borderRadius: '50%', background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c3c9d1', fontSize: 11, fontWeight: 700 }}>Be</a>
-            <a href="#" style={{ width: 32, height: 32, borderRadius: '50%', background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c3c9d1' }}>
-              <PlayTriangleIcon size={13} color="currentColor" />
-            </a>
-            <a href="#" style={{ width: 32, height: 32, borderRadius: '50%', background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c3c9d1', fontSize: 13, fontWeight: 700 }}>X</a>
-          </div>
+          <div style={{ color: '#6b7481', fontSize: 12.5 }}>&copy; 2026 Joorabchian Support Group. All rights reserved.</div>
         </div>
       </footer>
 
       {activeVideo && (
         <VideoModal
           src={activeVideo.src}
+          vimeoId={activeVideo.vimeoId}
           title={activeVideo.title}
           accent={accent}
           onClose={() => setActiveVideo(null)}

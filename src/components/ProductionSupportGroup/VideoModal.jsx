@@ -6,8 +6,10 @@ import { CloseIcon, PauseIcon, PlayTriangleIcon } from './icons';
  * - Click the dark overlay (outside the player) to close.
  * - Click the video, or the center button, to toggle play/pause.
  * - Esc key and the close button also dismiss it.
+ * - Pass either `src` (local file, custom play/pause UI) or `vimeoId`
+ *   (embeds the Vimeo player with its own native controls).
  */
-export default function VideoModal({ src, title, accent = '#E4611F', onClose }) {
+export default function VideoModal({ src, vimeoId, title, accent = '#E4611F', onClose }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -87,41 +89,53 @@ export default function VideoModal({ src, title, accent = '#E4611F', onClose }) 
         </button>
 
         <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', background: '#000' }}>
-          <video
-            ref={videoRef}
-            src={src}
-            autoPlay
-            playsInline
-            onClick={togglePlay}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            style={{ width: '100%', height: '100%', display: 'block', cursor: 'pointer' }}
-          />
-          <button
-            type="button"
-            onClick={togglePlay}
-            aria-label={isPlaying ? 'Pause video' : 'Play video'}
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              width: 64,
-              height: 64,
-              borderRadius: '50%',
-              background: 'rgba(10,13,19,0.55)',
-              border: '1.5px solid rgba(255,255,255,0.5)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              opacity: isPlaying ? 0 : 1,
-              transition: 'opacity 0.2s ease',
-              pointerEvents: isPlaying ? 'none' : 'auto',
-            }}
-          >
-            {isPlaying ? <PauseIcon size={22} color="#fff" /> : <PlayTriangleIcon size={22} color="#fff" />}
-          </button>
+          {vimeoId ? (
+            <iframe
+              src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portfolio=0&dnt=1`}
+              title={title || 'Video player'}
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              allowFullScreen
+              style={{ width: '100%', height: '100%', display: 'block', border: 'none' }}
+            />
+          ) : (
+            <>
+              <video
+                ref={videoRef}
+                src={src}
+                autoPlay
+                playsInline
+                onClick={togglePlay}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                style={{ width: '100%', height: '100%', display: 'block', cursor: 'pointer' }}
+              />
+              <button
+                type="button"
+                onClick={togglePlay}
+                aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%,-50%)',
+                  width: 64,
+                  height: 64,
+                  borderRadius: '50%',
+                  background: 'rgba(10,13,19,0.55)',
+                  border: '1.5px solid rgba(255,255,255,0.5)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  opacity: isPlaying ? 0 : 1,
+                  transition: 'opacity 0.2s ease',
+                  pointerEvents: isPlaying ? 'none' : 'auto',
+                }}
+              >
+                {isPlaying ? <PauseIcon size={22} color="#fff" /> : <PlayTriangleIcon size={22} color="#fff" />}
+              </button>
+            </>
+          )}
         </div>
 
         {title && (
