@@ -92,6 +92,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
+  const [workPage, setWorkPage] = useState(0);
 
   const updateField = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
   const submitForm = () => setSubmitted(true);
@@ -192,11 +193,16 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
     { id: 'work-drilling-equipment', title: 'Drilling Equipment', tag: '3D Animation', placeholder: 'Drilling equipment render', src: drillingEquipmentThumb, vimeoId: '1218521079' },
     { id: 'work-oil-gas-process', title: 'Oil & Gas Process', tag: '3D Animation', placeholder: 'Oil & gas process render', src: oilGasProcessThumb, vimeoId: '1218523398' },
     { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: null, vimeoId: '1218524563' },
-    { id: 'work-equipment-training', title: 'Equipment Training Simulation', tag: 'Unreal Engine / VR', placeholder: 'Equipment training simulation', src: equipmentTrainingThumb, vimeoId: '1218525467' },
+    { id: 'work-equipment-training', title: 'VR Product Showcase', tag: 'Unreal Engine / VR', placeholder: 'VR product showcase', src: equipmentTrainingThumb, vimeoId: '1218525467' },
     { id: 'work-vr-safety-training', title: 'VR Safety Training', tag: 'Unreal Engine / VR', placeholder: 'VR safety training', src: vrSafetyTrainingThumb, vimeoId: '1218532267' },
     { id: 'work-interactive-config', title: 'Interactive Configuration', tag: 'Web Interactive', placeholder: 'Interactive WebGL configurator', src: interactiveConfigThumb, vimeoId: '1218537166' },
     { id: 'work-product-configurator', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'WebGL product configurator', src: productConfiguratorThumb, vimeoId: '1220185878' },
   ];
+
+  // First page shows 5 items, the rest spill onto a second page.
+  const WORK_PAGE_SIZE = 5;
+  const workPages = [workItems.slice(0, WORK_PAGE_SIZE), workItems.slice(WORK_PAGE_SIZE)];
+  const visibleWorkItems = workPages[workPage] || workPages[0];
 
   const workflowSteps = useMemo(
     () => [
@@ -347,9 +353,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
                   </span>{' '}
                   Introduction Video
                 </button>
-                <a href="#" style={{ color: '#c3c9d1', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                  Download CV <span>&#8595;</span>
-                </a>
               </div>
             </div>
 
@@ -392,8 +395,8 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
 
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
                   <PlaceholderImage label="Portrait photo" shape="circle" src={IMAGES.avatarPhoto} style={{ width: 110, height: 110 }} />
-                  <div style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 14, letterSpacing: 0.5 }}>TEDDY LAQ</div>
-                  <div style={{ color: '#8b94a3', fontSize: 12 }}>3D Art Director</div>
+                  <div style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 14, letterSpacing: 0.5 }}>ALI JOORABCHIAN</div>
+                  <div style={{ color: '#8b94a3', fontSize: 12 }}>3D Production Lead</div>
                 </div>
 
                 <div style={{ flex: '1 1 220px', maxWidth: 250, background: '#171B24', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: 16 }}>
@@ -438,13 +441,13 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
                   I lead a dedicated team of 30+ artists, technical artists and developers across 3D, engine and web interactive pipelines.
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: 14 }}>
+              <div style={{ display: 'flex', gap: 14, marginTop: 28 }}>
                 <GearIcon color={accent} size={26} style={{ flexShrink: 0 }} />
                 <p style={{ color: '#9aa4b2', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
                   We adapt to your workflows, invest in your process, and deliver consistent quality at every stage.
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: 14 }}>
+              <div style={{ display: 'flex', gap: 14, marginTop: 28 }}>
                 <ShieldIcon color={accent} size={26} style={{ flexShrink: 0 }} />
                 <p style={{ color: '#9aa4b2', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
                   We guarantee scale & flexibility — high-quality, production-ready work you can rely on.
@@ -650,8 +653,8 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
         <h2 style={sectionHeading}>
           Selected Work <span style={{ color: '#8b94a3', fontWeight: 500, fontSize: '0.6em' }}>(Production Support Examples)</span>
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 18 }}>
-          {workItems.map((work) => (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 18, marginBottom: 22 }}>
+          {visibleWorkItems.map((work) => (
             <div key={work.id}>
               <div
                 style={{ position: 'relative', cursor: work.vimeoId ? 'pointer' : 'default' }}
@@ -678,10 +681,22 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             </div>
           ))}
         </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 8 }}>
+          {workPages.map((pageItems, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setWorkPage(i)}
+              aria-label={`Show selected work page ${i + 1}`}
+              style={{ width: 8, height: 8, borderRadius: '50%', border: 'none', padding: 0, cursor: 'pointer', background: i === workPage ? accent : 'rgba(255,255,255,0.2)' }}
+            />
+          ))}
+        </div>
       </section>
 
       {/* WORKFLOW + PARTNERSHIP */}
-      <section id="workflow" style={{ ...container, display: 'flex', flexWrap: 'wrap', gap: 36 }}>
+      <section id="workflow" style={{ ...container, display: 'flex', flexWrap: 'wrap', gap: 36, flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 36 }}>
         <div style={{ flex: '1.4 1 480px', minWidth: 320 }}>
           <h2 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', color: '#f3f5f7', margin: '0 0 30px' }}>
             How We <span style={{ color: accent }}>Work</span> Together
@@ -732,6 +747,11 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             ))}
           </div>
         </div>
+      </div>
+      <p style={{ color: '#9aa4b2', fontSize: 13.5, lineHeight: 1.7, textAlign: 'center', maxWidth: 820, margin: '8px auto 0', paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+        For the detailed overview of our production workflow, sample timeline and pricing structures, please contact me via Email / WhatsApp / Google Meet to
+        receive the full production brief (PDF) or discussing your concerns face to face.
+      </p>
       </section>
 
       {/* FOOTER */}
@@ -783,10 +803,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <PinIcon color={accent} size={16} />
                 <span style={{ color: '#9aa4b2', fontSize: 13 }}>Istanbul, Turkey</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <GlobeIcon color={accent} size={16} />
-                <span style={{ color: '#9aa4b2', fontSize: 13 }}>Working with partners worldwide</span>
               </div>
             </div>
           </div>
