@@ -41,6 +41,7 @@ import foodProcessingThumb from '../../assets/images/work-thumbs/food-processing
 import renewableEnergyThumb from '../../assets/images/work-thumbs/renewable-energy.jpg';
 import drillingEquipmentThumb from '../../assets/images/work-thumbs/drilling-equipment.jpg';
 import oilGasProcessThumb from '../../assets/images/work-thumbs/oil-gas-process.jpg';
+import offshoreMarineThumb from '../../assets/images/work-thumbs/offshore-marine.jpg';
 import equipmentTrainingThumb from '../../assets/images/work-thumbs/equipment-training.jpg';
 import vrSafetyTrainingThumb from '../../assets/images/work-thumbs/vr-safety-training.jpg';
 import interactiveConfigThumb from '../../assets/images/work-thumbs/interactive-configuration.jpg';
@@ -192,7 +193,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
     { id: 'work-renewable-energy', title: 'Renewable Energy', tag: '3D Animation', placeholder: 'Renewable energy render', src: renewableEnergyThumb, vimeoId: '1218518339' },
     { id: 'work-drilling-equipment', title: 'Drilling Equipment', tag: '3D Animation', placeholder: 'Drilling equipment render', src: drillingEquipmentThumb, vimeoId: '1218521079' },
     { id: 'work-oil-gas-process', title: 'Oil & Gas Process', tag: '3D Animation', placeholder: 'Oil & gas process render', src: oilGasProcessThumb, vimeoId: '1218523398' },
-    { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: null, vimeoId: '1218524563' },
+    { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: offshoreMarineThumb, vimeoId: '1218524563' },
     { id: 'work-equipment-training', title: 'VR Product Showcase', tag: 'Unreal Engine / VR', placeholder: 'VR product showcase', src: equipmentTrainingThumb, vimeoId: '1218525467' },
     { id: 'work-vr-safety-training', title: 'VR Safety Training', tag: 'Unreal Engine / VR', placeholder: 'VR safety training', src: vrSafetyTrainingThumb, vimeoId: '1218532267' },
     { id: 'work-interactive-config', title: 'Interactive Configuration', tag: 'Web Interactive', placeholder: 'Interactive WebGL configurator', src: interactiveConfigThumb, vimeoId: '1218537166' },
