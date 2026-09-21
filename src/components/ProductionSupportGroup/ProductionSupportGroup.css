@@ -30,3 +30,69 @@
 .psg-root button {
   font-family: inherit;
 }
+
+/* Preloader */
+.psg-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0d13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  transition: opacity 0.5s ease;
+}
+
+.psg-preloader-bars {
+  display: flex;
+  gap: 6px;
+}
+
+.psg-preloader-bar {
+  width: 8px;
+  height: 46px;
+  display: inline-block;
+  animation: psg-bar-pulse 0.9s ease-in-out infinite;
+}
+
+.psg-preloader-bar:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+@keyframes psg-bar-pulse {
+  0%, 100% { transform: skewX(-12deg) scaleY(0.45); opacity: 0.5; }
+  50% { transform: skewX(-12deg) scaleY(1); opacity: 1; }
+}
+
+.psg-preloader-label {
+  color: #8b94a3;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+/* Scroll reveal */
+.psg-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.psg-reveal.psg-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .psg-preloader-bar {
+    animation: none;
+  }
+  .psg-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

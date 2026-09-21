@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react';
 import './ProductionSupportGroup.css';
 import PlaceholderImage from './PlaceholderImage';
 import VideoModal from './VideoModal';
+import Preloader from './Preloader';
+import Reveal from './Reveal';
 import {
   ActivityIcon,
   CheckIcon,
@@ -236,6 +238,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
 
   return (
     <div className="psg-root">
+      <Preloader accent={accent} />
       {/* HEADER */}
       <header
         style={{
@@ -319,7 +322,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
 
       {/* ABOUT */}
       <section id="about" style={container}>
-        <div style={{ ...card, padding: 'clamp(24px,3.5vw,44px)' }}>
+        <Reveal style={{ ...card, padding: 'clamp(24px,3.5vw,44px)' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(24px,3vw,40px)' }}>
             <div style={{ flex: '1 1 300px', minWidth: 280 }}>
               <div style={{ color: accent, fontWeight: 700, fontSize: 13, letterSpacing: 1.5, marginBottom: 10 }}>ABOUT ME</div>
@@ -456,7 +459,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* WHAT I BRING */}
@@ -465,14 +468,14 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
           What I Bring to <span style={{ color: accent }}>Your Pipeline</span>
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 18 }}>
-          {bringCards.map((c) => (
-            <div key={c.title} style={{ ...card, padding: '26px 20px', textAlign: 'center' }}>
+          {bringCards.map((c, i) => (
+            <Reveal key={c.title} delay={i * 0.06} style={{ ...card, padding: '26px 20px', textAlign: 'center' }}>
               <div style={{ width: 52, height: 52, borderRadius: 12, background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                 {c.icon}
               </div>
               <div style={{ color: '#f3f5f7', fontWeight: 700, fontSize: 15.5, marginBottom: 8 }}>{c.title}</div>
               <div style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6 }}>{c.desc}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -483,8 +486,8 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
           We Support <span style={{ color: accent }}>Creative</span> & <span style={{ color: accent }}>Technical</span> Teams
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 22 }}>
-          {teamCards.map((team) => (
-            <div key={team.title} style={{ ...card, padding: 28 }}>
+          {teamCards.map((team, i) => (
+            <Reveal key={team.title} delay={i * 0.08} style={{ ...card, padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
                 <div style={{ width: 46, height: 46, borderRadius: 10, background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {team.icon}
@@ -498,7 +501,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
                   <span style={{ color: '#c3c9d1', fontSize: 13.5 }}>{item}</span>
                 </div>
               ))}
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -509,14 +512,14 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
           Why <span style={{ color: accent }}>Partners</span> Choose to Work With Us
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 18 }}>
-          {whyCards.map((w) => (
-            <div key={w.title} style={{ textAlign: 'center', padding: 10 }}>
+          {whyCards.map((w, i) => (
+            <Reveal key={w.title} delay={i * 0.05} style={{ textAlign: 'center', padding: 10 }}>
               <div style={{ width: 56, height: 56, borderRadius: '50%', background: '#12161F', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px' }}>
                 {w.icon}
               </div>
               <div style={{ color: '#f3f5f7', fontWeight: 700, fontSize: 14.5, marginBottom: 6 }}>{w.title}</div>
               <div style={{ color: '#8b94a3', fontSize: 13, lineHeight: 1.55 }}>{w.desc}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -527,7 +530,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
           Our <span style={{ color: accent }}>Core</span> Production Capabilities
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 22 }}>
-          <div style={{ ...card, padding: 24 }}>
+          <Reveal style={{ ...card, padding: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <CubeIcon color={accent} size={20} />
               <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>3D PRODUCTION</span>
@@ -565,9 +568,9 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             <p style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
               Complete 3D production pipeline from CAD data to final photorealistic render, optimized for industrial and technical visualization.
             </p>
-          </div>
+          </Reveal>
 
-          <div style={{ ...card, padding: 24 }}>
+          <Reveal delay={0.08} style={{ ...card, padding: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <MonitorIcon color={accent} size={20} />
               <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>UNREAL ENGINE</span>
@@ -605,9 +608,9 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             <p style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
               Real-time environments and interactive experiences built with Unreal Engine, optimized for performance and quality.
             </p>
-          </div>
+          </Reveal>
 
-          <div style={{ ...card, padding: 24 }}>
+          <Reveal delay={0.16} style={{ ...card, padding: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <GlobeIcon color={accent} size={20} />
               <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>WEBGL</span>
@@ -645,7 +648,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             <p style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
               Optimized 3D content and interactive applications for the web, delivering smooth performance across all browsers.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -655,8 +658,8 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
           Selected Work <span style={{ color: '#8b94a3', fontWeight: 500, fontSize: '0.6em' }}>(Production Support Examples)</span>
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 18, marginBottom: 22 }}>
-          {visibleWorkItems.map((work) => (
-            <div key={work.id}>
+          {visibleWorkItems.map((work, i) => (
+            <Reveal key={work.id} delay={i * 0.07}>
               <div
                 style={{ position: 'relative', cursor: work.vimeoId ? 'pointer' : 'default' }}
                 onClick={() => work.vimeoId && setActiveVideo({ vimeoId: work.vimeoId, title: work.title })}
@@ -679,7 +682,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               </div>
               <div style={{ color: '#e7e9ed', fontWeight: 600, fontSize: 14, marginTop: 12 }}>{work.title}</div>
               <div style={{ color: '#8b94a3', fontSize: 12.5 }}>{work.tag}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 8 }}>
@@ -698,7 +701,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
       {/* WORKFLOW + PARTNERSHIP */}
       <section id="workflow" style={{ ...container, display: 'flex', flexWrap: 'wrap', gap: 36, flexDirection: 'column' }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 36 }}>
-        <div style={{ flex: '1.4 1 480px', minWidth: 320 }}>
+        <Reveal style={{ flex: '1.4 1 480px', minWidth: 320 }}>
           <h2 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', color: '#f3f5f7', margin: '0 0 30px' }}>
             How We <span style={{ color: accent }}>Work</span> Together
           </h2>
@@ -729,14 +732,14 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
         <div style={{ flex: '1 1 320px', minWidth: 280 }}>
           <h2 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 'clamp(22px,2.2vw,28px)', color: '#f3f5f7', margin: '0 0 30px' }}>
             Partnership <span style={{ color: accent }}>Models</span>
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {partnerCards.map((p) => (
-              <div key={p.title} style={{ ...card, padding: 20, display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+            {partnerCards.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08} style={{ ...card, padding: 20, display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                 <div style={{ width: 44, height: 44, borderRadius: 10, background: '#171B24', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {p.icon}
                 </div>
@@ -744,7 +747,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
                   <div style={{ color: '#f3f5f7', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{p.title}</div>
                   <div style={{ color: '#8b94a3', fontSize: 13, lineHeight: 1.55 }}>{p.desc}</div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
