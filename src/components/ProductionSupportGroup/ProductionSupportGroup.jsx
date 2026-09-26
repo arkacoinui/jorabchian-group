@@ -7,7 +7,6 @@ import Reveal from './Reveal';
 import {
   ActivityIcon,
   CheckIcon,
-  CircuitLinkIcon,
   ClockIcon,
   CodeIcon,
   CpuIcon,
@@ -19,18 +18,15 @@ import {
   LayersIcon,
   MailIcon,
   MonitorIcon,
-  PhotoIcon,
   PinIcon,
   PlayTriangleIcon,
   RenderIcon,
   RigIcon,
-  RingsIcon,
   ShieldIcon,
   ShieldXIcon,
   SlidersIcon,
   TargetIcon,
   UsersIcon,
-  WindowBarIcon,
 } from './icons';
 
 import heroCollage from '../../assets/images/Baner 1.jpg';
@@ -329,7 +325,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <h2 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 'clamp(24px,2.4vw,30px)', color: '#f3f5f7', margin: '0 0 8px' }}>
                 Hi, I&apos;m Ali Joorabchian.
               </h2>
-              <div style={{ color: accent, fontWeight: 600, fontSize: 15, marginBottom: 16 }}>3D Production Lead & Technical Art Specialist.</div>
               <p style={{ color: '#9aa4b2', fontSize: 14.5, lineHeight: 1.7, margin: '0 0 14px' }}>
                 With over 15 years of experience in 3D animation, software development, and interactive production, I help studios and companies
                 overcome complex pipeline challenges and bottlenecks across cinematic production and real-time.
@@ -361,66 +356,8 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             </div>
 
             <div style={{ flex: '2.2 1 560px', minWidth: 300 }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 20, marginBottom: 28 }}>
-                <div style={{ flex: '1 1 190px', maxWidth: 220, background: '#171B24', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <RingsIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 12.5, fontWeight: 600 }}>
-                      3D Animation
-                      <br />
-                      15+ Years
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <CircuitLinkIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 12.5, fontWeight: 600 }}>
-                      Pipeline
-                      <br />
-                      Expertise
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <GearIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 12.5, fontWeight: 600 }}>
-                      Engineering
-                      <br />
-                      Mindset
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <GlobeIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 12.5, fontWeight: 600 }}>
-                      Interactive
-                      <br />
-                      Studio
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
-                  <PlaceholderImage label="Portrait photo" shape="circle" src={IMAGES.avatarPhoto} style={{ width: 110, height: 110 }} />
-                  <div style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 14, letterSpacing: 0.5 }}>ALI JOORABCHIAN</div>
-                  <div style={{ color: '#8b94a3', fontSize: 12 }}>3D Production Lead</div>
-                </div>
-
-                <div style={{ flex: '1 1 220px', maxWidth: 250, background: '#171B24', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <CubeIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 13, fontWeight: 600 }}>3D Production & Animation</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <WindowBarIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 13, fontWeight: 600 }}>Real-Time (Unreal Engine)</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <GlobeIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 13, fontWeight: 600 }}>WebGL & Interactive</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <PhotoIcon color={accent} />
-                    <span style={{ color: '#e7e9ed', fontSize: 13, fontWeight: 600 }}>Technical Visualization</span>
-                  </div>
-                </div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
+                <PlaceholderImage label="Portrait photo" shape="circle" src={IMAGES.avatarPhoto} style={{ width: 'min(260px,60%)', aspectRatio: '1 / 1' }} />
               </div>
 
               <div style={{ position: 'relative', padding: '8px 10px' }}>
