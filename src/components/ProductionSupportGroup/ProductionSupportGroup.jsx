@@ -41,9 +41,12 @@ import drillingEquipmentThumb from '../../assets/images/work-thumbs/drilling-equ
 import oilGasProcessThumb from '../../assets/images/work-thumbs/oil-gas-process.jpg';
 import offshoreMarineThumb from '../../assets/images/work-thumbs/offshore-marine.jpg';
 import equipmentTrainingThumb from '../../assets/images/work-thumbs/equipment-training.jpg';
+import vrProductShowcaseCover from '../../assets/images/work-thumbs/vr-product-showcase-cover.png';
 import vrSafetyTrainingThumb from '../../assets/images/work-thumbs/vr-safety-training.jpg';
+import vrSafetyTrainingCover from '../../assets/images/work-thumbs/vr-safety-training-cover.png';
 import interactiveConfigThumb from '../../assets/images/work-thumbs/interactive-configuration.jpg';
 import productConfiguratorThumb from '../../assets/images/work-thumbs/product-configurator-webgl.jpg';
+import productConfiguratorCover from '../../assets/images/work-thumbs/product-configurator-webgl-cover.png';
 
 // Real image paths — see the README for how to add or swap these.
 // Leave an entry `null` to keep the placeholder for that slot.
@@ -192,10 +195,10 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
     { id: 'work-drilling-equipment', title: 'Drilling Equipment', tag: '3D Animation', placeholder: 'Drilling equipment render', src: drillingEquipmentThumb, vimeoId: '1218521079' },
     { id: 'work-oil-gas-process', title: 'Oil & Gas Process', tag: '3D Animation', placeholder: 'Oil & gas process render', src: oilGasProcessThumb, vimeoId: '1218523398' },
     { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: offshoreMarineThumb, vimeoId: '1218524563' },
-    { id: 'work-equipment-training', title: 'VR Product Showcase', tag: 'Unreal Engine / VR', placeholder: 'VR product showcase', src: equipmentTrainingThumb, vimeoId: '1218525467' },
-    { id: 'work-vr-safety-training', title: 'VR Safety Training', tag: 'Unreal Engine / VR', placeholder: 'VR safety training', src: vrSafetyTrainingThumb, vimeoId: '1218532267' },
+    { id: 'work-equipment-training', title: 'VR Product Showcase', tag: 'Unreal Engine / VR', placeholder: 'VR product showcase', src: vrProductShowcaseCover, vimeoId: '1235504023' },
+    { id: 'work-vr-safety-training', title: 'VR Safety Training', tag: 'Unreal Engine / VR', placeholder: 'VR safety training', src: vrSafetyTrainingCover, vimeoId: '1235502239' },
     { id: 'work-interactive-config', title: 'Interactive Configuration', tag: 'Web Interactive', placeholder: 'Interactive WebGL configurator', src: interactiveConfigThumb, vimeoId: '1218537166' },
-    { id: 'work-product-configurator', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'WebGL product configurator', src: productConfiguratorThumb, vimeoId: '1220185878' },
+    { id: 'work-product-configurator', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'WebGL product configurator', src: productConfiguratorCover, vimeoId: '1218525467' },
   ];
 
   // First page shows 5 items, the rest spill onto a second page.
@@ -379,7 +382,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <div style={{ display: 'flex', gap: 14 }}>
                 <UsersIcon color={accent} size={26} style={{ flexShrink: 0 }} />
                 <p style={{ color: '#9aa4b2', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
-                  I lead a dedicated team of 30+ artists, technical artists and developers across 3D, engine and web interactive pipelines.
+                  I lead a dedicated team of 10+ artists, technical artists and developers across 3D, engine and web interactive pipelines.
                 </p>
               </div>
               <div style={{ display: 'flex', gap: 14, marginTop: 28 }}>
@@ -547,45 +550,6 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             </p>
           </Reveal>
 
-          <Reveal delay={0.16} style={{ ...card, padding: 24 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <GlobeIcon color={accent} size={20} />
-              <span style={{ color: '#f3f5f7', fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: 0.5 }}>WEBGL</span>
-            </div>
-            <div
-              style={{ position: 'relative', cursor: 'pointer', marginBottom: 18 }}
-              onClick={() => setActiveVideo({ vimeoId: DEMO_REELS.capWebgl, title: 'WebGL Demoreel' })}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setActiveVideo({ vimeoId: DEMO_REELS.capWebgl, title: 'WebGL Demoreel' });
-                }
-              }}
-              aria-label="Play WebGL demo reel"
-            >
-              <PlaceholderImage label="WebGL product configurator screenshot" shape="rounded" radius={12} src={IMAGES.capWebgl} style={{ width: '100%', height: 220 }} />
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
-                <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(10,13,19,0.55)', border: '1.5px solid rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <PlayTriangleIcon size={16} color="#fff" />
-                </div>
-              </div>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'space-between', marginBottom: 16 }}>
-              {webglIcons.map((ic) => (
-                <div key={ic.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 70 }}>
-                  <div style={{ width: 38, height: 38, borderRadius: '50%', background: '#171B24', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {ic.icon}
-                  </div>
-                  <div style={{ color: '#8b94a3', fontSize: 10.5, textAlign: 'center' }}>{ic.label}</div>
-                </div>
-              ))}
-            </div>
-            <p style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
-              Optimized 3D content and interactive applications for the web, delivering smooth performance across all browsers.
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -735,7 +699,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <MailIcon color={accent} size={16} />
-                <span style={{ color: '#9aa4b2', fontSize: 13 }}>Hello@joorabchian.com</span>
+                <span style={{ color: '#9aa4b2', fontSize: 13 }}>Ali@joorabchian.com</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <DiagonalLinkIcon color={accent} size={16} />
