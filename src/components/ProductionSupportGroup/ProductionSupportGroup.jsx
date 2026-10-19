@@ -62,7 +62,7 @@ const IMAGES = {
 // the matching reel in the VideoModal.
 const DEMO_REELS = {
   cap3d: '1218499250', // DemoReel - 3d Animation
-  capUnreal: '1218499918', // DemoReel - Unreal
+  capUnreal: '1220185878', // DemoReel - Unreal
   capWebgl: '1218500784', // DemoReel - WebGl
 };
 
@@ -73,7 +73,7 @@ const NAV_LINKS = [
   { href: '#support', label: 'How We Support' },
   { href: '#capabilities', label: 'Our Capabilities' },
   { href: '#workflow', label: 'Workflow' },
-  { href: '#partnership', label: 'Partnership Models' },
+  { href: '#selected-work', label: 'Partnership Models' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -92,12 +92,21 @@ const sectionHeading = {
 export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
   const accent = accentColor;
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
   const [workPage, setWorkPage] = useState(0);
 
   const updateField = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
-  const submitForm = () => setSubmitted(true);
+  const submitForm = () => {
+    const subject = `Project inquiry from ${form.name || 'website visitor'}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Company / Studio: ${form.company}`,
+      '',
+      form.message,
+    ].join('\n');
+    window.location.href = `mailto:Ali@joorabchian.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   const bringCards = useMemo(
     () => [
@@ -191,13 +200,13 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
 
   const workItems = [
     { id: 'work-food-processing', title: 'Food Processing', tag: '3D Animation', placeholder: 'Food processing line render', src: foodProcessingThumb, vimeoId: '1218517905' },
-    { id: 'work-renewable-energy', title: 'Renewable Energy', tag: '3D Animation', placeholder: 'Renewable energy render', src: renewableEnergyThumb, vimeoId: '1218518339' },
-    { id: 'work-drilling-equipment', title: 'Drilling Equipment', tag: '3D Animation', placeholder: 'Drilling equipment render', src: drillingEquipmentThumb, vimeoId: '1218521079' },
+    { id: 'work-renewable-energy', title: 'Renewable Energy', tag: '3D Animation', placeholder: 'Renewable energy render', src: renewableEnergyThumb, vimeoId: '1218524563' },
+    { id: 'work-drilling-equipment', title: 'Drilling Equipment', tag: '3D Animation', placeholder: 'Drilling equipment render', src: drillingEquipmentThumb, vimeoId: '1218518339' },
     { id: 'work-oil-gas-process', title: 'Oil & Gas Process', tag: '3D Animation', placeholder: 'Oil & gas process render', src: oilGasProcessThumb, vimeoId: '1218523398' },
-    { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: offshoreMarineThumb, vimeoId: '1218524563' },
+    { id: 'work-offshore-marine', title: 'Offshore & Marine', tag: '3D Animation', placeholder: 'Offshore & marine render', src: offshoreMarineThumb, vimeoId: '1218521079' },
     { id: 'work-equipment-training', title: 'VR Product Showcase', tag: 'Unreal Engine / VR', placeholder: 'VR product showcase', src: vrProductShowcaseCover, vimeoId: '1235504023' },
     { id: 'work-vr-safety-training', title: 'VR Safety Training', tag: 'Unreal Engine / VR', placeholder: 'VR safety training', src: vrSafetyTrainingCover, vimeoId: '1235502239' },
-    { id: 'work-interactive-config', title: 'Interactive Configuration', tag: 'Web Interactive', placeholder: 'Interactive WebGL configurator', src: interactiveConfigThumb, vimeoId: '1218537166' },
+    { id: 'work-interactive-config', title: 'Interactive Configuration', tag: 'Unreal Engine', placeholder: 'Interactive WebGL configurator', src: interactiveConfigThumb, vimeoId: '1218537166' },
     { id: 'work-product-configurator', title: 'Product Configurator (WebGL)', tag: 'Web Interactive', placeholder: 'WebGL product configurator', src: productConfiguratorCover, vimeoId: '1218525467' },
   ];
 
@@ -403,7 +412,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
       </section>
 
       {/* WHAT I BRING */}
-      <section style={container}>
+      <section id="selected-work" style={container}>
         <h2 style={sectionHeading}>
           What I Bring to <span style={{ color: accent }}>Your Pipeline</span>
         </h2>
@@ -546,7 +555,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               ))}
             </div>
             <p style={{ color: '#8b94a3', fontSize: 13.5, lineHeight: 1.6, margin: 0 }}>
-              Real-time environments and interactive experiences built with Unreal Engine, optimized for performance and quality.
+              Real-time environments and interactive experiences built with Unreal Engine, and webgl technology
             </p>
           </Reveal>
 
@@ -690,7 +699,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               <a href="#support" style={{ color: '#9aa4b2', fontSize: 13.5 }}>How We Support</a>
               <a href="#capabilities" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Our Capabilities</a>
               <a href="#workflow" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Workflow</a>
-              <a href="#partnership" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Partnership Models</a>
+              <a href="#selected-work" style={{ color: '#9aa4b2', fontSize: 13.5 }}>Partnership Models</a>
             </div>
           </div>
 
@@ -703,7 +712,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <DiagonalLinkIcon color={accent} size={16} />
-                <span style={{ color: '#9aa4b2', fontSize: 13 }}>WhatsApp: +90 850 309 3377</span>
+                <span style={{ color: '#9aa4b2', fontSize: 13 }}>WhatsApp: +90 536 349 0827</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <PinIcon color={accent} size={16} />
@@ -747,7 +756,7 @@ export default function ProductionSupportGroup({ accentColor = '#E4611F' }) {
                 onClick={submitForm}
                 style={{ background: accent, color: '#fff', border: 'none', fontWeight: 600, fontSize: 13.5, padding: 12, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer' }}
               >
-                {submitted ? 'Sent — Thank you!' : 'Send Message'} <span>+</span>
+                Send Message <span>+</span>
               </button>
             </div>
           </div>
